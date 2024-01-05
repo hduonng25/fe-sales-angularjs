@@ -1,0 +1,97 @@
+.kichCo-sanPhamcustomer {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 4px;
+    border: none;
+    border-radius: 20px;
+    background-color: black;
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    text-align: center;
+    text-decoration: none;
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
+}
+
+.kichCo-sanPhamcustomer:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
+
+.kichCo-sanPhamcustomer.selected {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
+
+.kichCo-sanPhamcustomer.selected span {
+    color: #2980b9;
+    color: #fff;
+}
+
+.mauSac-sanPhamcustome {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    margin-left: 6px;
+    /* Biến thành hình tròn */
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
+}
+
+.mauSac-sanPhamcustome:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
+
+.mauSac-sanPhamcustome.selected {
+    background-color: #27ae60;
+    border: solid #2980b9 2px;
+    transform: scale(1.1);
+}
+
+#div-kichCoCustomer {
+    display: flex;
+}
+
+#div-inputSoLuong {
+    display: flex;
+}
+
+#div-inputSoLuong {
+    display: flex;
+    align-items: center;
+}
+
+#input-chonSoLuong {
+    width: 300px;
+    height: 30px;
+    margin-left: 15px;
+}
+
+#text-inputSoLuong {
+    margin-right: 10px;
+}
+
+#cart-inputSoLuong {
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    border: none !important;
+    outline: none;
+}
+
+td button {
+    display: block;
+    margin: 0 auto;
+}
+
+td button:hover {
+    transform: scale(1.1);
+}

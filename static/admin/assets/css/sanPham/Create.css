@@ -1,0 +1,118 @@
+#button-themNgay {
+    background-color: #87cefa;
+    color: #fff;
+    border: none !important;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+#button-themNgay:hover {
+    background-color: #5cacee !important;
+    color: #f1f1f1;
+    border: none;
+}
+
+/* Optional: Add box-shadow for a subtle lift */
+#button-themNgay {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Add transition for box-shadow */
+#button-themNgay:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#button-quayLai,
+#button-taoSP {
+    border-radius: 10px;
+    background-color: #87cefa;
+    border: none;
+}
+
+#button-quayLai:hover,
+#button-taoSP:hover {
+    filter: brightness(90%);
+    background-color: #5cacee;
+}
+
+#formFileButton {
+    margin-top: 30px;
+    border-radius: 10px;
+    background-color: #87cefa;
+    border: none;
+}
+
+#formFileButton:hover {
+    filter: brightness(90%);
+    background-color: #5cacee;
+}
+
+#myTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#myTable th {
+    background-color: #f2f2f2; /* Màu nền header nhẹ nhàng */
+    color: #333; /* Màu chữ header */
+    text-align: center;
+    padding: 12px;
+    border-bottom: 1px solid #ddd; /* Viền dưới cho header */
+}
+
+#myTable td {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Viền dưới cho dữ liệu */
+}
+
+#myTable tbody tr:hover {
+    background-color: #e0e0e0; /* Màu nền nhẹ khi di chuột qua */
+}
+
+#myTable .btn-link {
+    color: #dc3545;
+}
+
+#myTable .btn-link:hover {
+    text-decoration: underline;
+}
+
+#myTable {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+
+#h1-taoSanPham {
+    margin-top: 30px;
+    color: #5cacee; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+    position: relative; /* Để tạo vị trí tương đối cho phần tử con */
+}
+
+#h1-taoSanPham::after {
+    content: ''; /* Tạo một phần tử giả để làm background */
+    position: absolute; /* Vị trí tuyệt đối so với phần tử cha */
+    bottom: 0; /* Chạm vào đáy của phần tử cha */
+    left: 0; /* Nằm ở góc trái của phần tử cha */
+    width: 100%; /* Chiều rộng là 100% của phần tử cha */
+    height: 8px; /* Độ dày của phần tử giả, tạo ra đường line dưới */
+    background: linear-gradient(to right, #007bff, #00c2ff); /* Gradient màu */
+    box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.3); /* Đổ bóng */
+    z-index: -1; /* Đặt z-index để nó hiển thị phía sau văn bản */
+}
+
+#ion-icon {
+    background-color: #5cacee;
+}

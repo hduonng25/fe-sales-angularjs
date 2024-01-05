@@ -1,0 +1,91 @@
+#dsCustomerSP .filter-container {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#dsCustomerSP .form-label {
+    margin-bottom: 0.5rem;
+}
+
+#dsCustomerSP .form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition:
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    height: 38px;
+}
+
+#dsCustomerSP .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+#dsCustomerSP .product-card {
+    max-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+#dsCustomerSP .product-card:hover {
+    transform: scale(1.05);
+}
+
+#dsCustomerSP .product-card .card-body {
+    text-align: center;
+}
+
+#dsCustomerSP .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+
+#dsCustomerSP .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+#dsCustomerSP .product-item {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+#dsCustomerSP .product-item:hover {
+    transform: translateY(-5px);
+}
+
+#dsCustomerSP .product-thumbnail {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#dsCustomerSP .product-title {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+#dsCustomerSP .product-price {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+}

@@ -1,0 +1,117 @@
+<div ng-controller="NhanVienController" id="staffList">
+    <div class="container-fluid my-auto d-flex align-items-center">
+        <div class="mx-auto">
+            <h1>Nhân viên</h1>
+        </div>
+    </div>
+    <div class="d-flex">
+        <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search" ng-model="searchTerm" />
+        <button class="btn btn-primary btn-sm" type="submit" ng-click="searchAllStaff(searchTerm)">Tìm kiếm</button>
+
+        <input class="form-control me-1" type="date" placeholder="Search" aria-label="Search" ng-model="searchDate" />
+        <button class="btn btn-primary btn-sm" type="submit" ng-click="searchStaff(searchDate)">Tìm kiếm</button>
+        <button
+            type="button"
+            class="dt-button buttons-html5 btn btn-white btn-success btn-bold"
+            data-toggle="tooltip"
+            title="Tải lại dữ liệu"
+            ng-click="reLoad()"
+        >
+            <span> <i class="fas fa-sync-alt"></i></span>
+        </button>
+    </div>
+    <br />
+    <table class="table table-striped table-hover">
+        <thead class="bg-label-info" style="font-weight: 30px">
+            <tr>
+                <th>STT</th>
+                <th>Họ Tên</th>
+                <th>Email</th>
+                <th>Ngày sinh</th>
+                <th>Số điện thoại</th>
+                <th>Giới tính</th>
+                <th>Địa Chỉ</th>
+                <th>Trạng thái</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="promotion in pager.promotions">
+                <td>{{$index + 1}}</td>
+                <td>{{ promotion.hoTen }}</td>
+                <td>{{ promotion.email }}</td>
+                <td>{{ promotion.ngaySinh | date:'dd/MM/yyyy'}}</td>
+                <td>{{ promotion.soDienThoai }}</td>
+                <td>{{ promotion.gioiTinh == true ? 'Nam' :'Nữ'}}</td>
+                <td>{{ promotion.diaChi}}</td>
+                <td
+                    ng-class="{
+                    'text-success': promotion.trangThai2 === 'Đang hoạt động',
+                    'text-danger': promotion.trangThai2 === 'Nghỉ việc'}"
+                >
+                    {{ promotion.trangThai2 }}
+                </td>
+
+                <td>
+                    <div class="button-group">
+                        <button
+                            type="button"
+                            class="btn btn-link"
+                            ng-click="editStaff(promotion)"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="edit"
+                        >
+                            <i class="bx bx-edit me-2"></i>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-link btn-sm btn-rounded"
+                            ng-click="deleteStaff(promotion)"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="Delete"
+                        >
+                            <i class="bx bx-trash me-2"></i>
+                        </button>
+
+                        <div
+                            class="modal fade"
+                            ng-attr-id="confirmDeleteModal_{{ promotion.id }}"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-labelledby="confirmDeleteModalLabel"
+                            aria-hidden="true"
+                        >
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">Bạn có chắc chắn muốn xóa?</div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            Hủy
+                                        </button>
+                                        <button type="button" class="btn btn-danger" id="confirmDeleteButton">
+                                            Xóa
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="card-footer text-center">
+        <button class="btn" ng-repeat="pageNumber in pager.pageNumbers" ng-click="pager.page = pageNumber">
+            {{pageNumber}}
+        </button>
+    </div>
+</div>

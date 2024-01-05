@@ -1,0 +1,86 @@
+<div class="container-fluid mt-5 mb-5" ng-controller="ChiTietSanPhamHoaDonController">
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-6 border-end">
+                <div class="d-flex flex-column justify-content-center">
+                    <div class="main_image">
+                        <img src="/static/img/{{hinhAnh}}" id="main_product_image" width="350" />
+                    </div>
+                    <div class="thumbnail_images">
+                        <ul id="thumbnail">
+                            <li ng-repeat="ha in hinhAnhs">
+                                <img onclick="changeImage(this)" src="/static/img/{{ha.tenAnh}}" width="80" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-3 right-side">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3>{{sanPham.tenSanPham}}</h3>
+                    </div>
+                    <div class="mt-2 pr-3 content">
+                        <p>{{sanPham.moTa}}</p>
+                    </div>
+
+                    <h3>{{sanPham.gia.toLocaleString('vi-VN')}} VNĐ</h3>
+
+                    <div class="mt-2">
+                        <span class="fw-bold">Màu sắc</span>
+                        <div class="colors">
+                            <ul id="marker">
+                                <button
+                                    class="mauSac-sanPhamcustome"
+                                    ng-repeat="mauSac in mauSac"
+                                    ng-style="{'background-color': mauSac}"
+                                    ng-click="selectMauSac(mauSac)"
+                                    ng-class="{selected: mauSac === selectedMauSac}"
+                                    ng-model="mauSac"
+                                    style="border: 1px solid black"
+                                ></button>
+                                <input type="hidden" id="mauSacDaChon" />
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <span class="fw-bold">Kích cỡ</span>
+                        <div class="colors" id="div-kichCoCustomer">
+                            <ul id="marker" ng-repeat="kichCo in kichCo">
+                                <button
+                                    class="kichCo-sanPhamcustomer"
+                                    ng-click="selectKichCo(kichCo)"
+                                    ng-class="{selected: kichCo === selectedKichCo}"
+                                    ng-model="kichCo"
+                                >
+                                    <span>{{kichCo}}</span>
+                                </button>
+                                <input type="hidden" id="kichCoDaChon-customer" />
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <span class="fw-bold"></span>
+                        <div class="colors">
+                            <h6>Số lượng hiện có: <span id="customer-sanPham-soLuongHienCo"></span></h6>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <div class="colors" id="div-inputSoLuong">
+                            <h6>Chọn số lượng:</h6>
+                            <input type="number" id="input-chonSoLuong" class="form-control" ng-model="chonSoLuong" />
+                        </div>
+                    </div>
+
+                    <div class="buttons d-flex flex-row mt-5 gap-3">
+                        <button class="btn btn-outline-dark" ng-click="quayLai(sanPham)">Quay lại</button>
+                        <button class="btn btn-dark" ng-click="themSanPham(sanPham)">Thêm sản phẩm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

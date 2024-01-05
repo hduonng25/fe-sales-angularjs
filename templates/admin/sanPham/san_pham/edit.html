@@ -1,0 +1,45 @@
+<div class="container-fluid" ng-controller="EditProductController">
+    <div class="card mb-4" id="editCTSP1">
+        <h2 id="h1-XemTruoc" class="text-center">Cập nhật chi tiết sản phẩm</h2>
+        <br />
+        <div class="card-body">
+            <form>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-4">
+                        <h6>Tên sản phẩm: <strong>{{editproduct.sanPham.tenSanPham}}</strong></h6>
+                    </div>
+                    <div class="col-md-4">
+                        <h6>Màu sắc: <strong>{{editproduct.mauSac.tenMauSac}}</strong></h6>
+                    </div>
+                    <div class="col-md-4">
+                        <h6>Kích cỡ: <strong>{{editproduct.kichCo.kichCo}}</strong></h6>
+                    </div>
+                </div>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="mb-1">Số lượng</label>
+                        <input class="form-control" id="quantity" type="number" ng-model="editproduct.soLuong" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="mb-1">Giá bán</label>
+                        <input class="form-control" id="gia" type="number" ng-model="editproduct.sanPham.gia" />
+                    </div>
+                </div>
+                <br />
+                <div class="text-right">
+                    <button id="btnQuayLai" class="btn btn-primary" type="button" ng-click="returnEdit(editProduct)">
+                        <ion-icon name="arrow-back"></ion-icon> Quay lại
+                    </button>
+
+                    <button id="btnQuayLai" class="btn btn-primary" type="button" ng-click="editSPCT(editProduct)">
+                        <i class="fas fa-image mr-2"></i> Thêm ảnh sản phẩm
+                    </button>
+
+                    <button id="btnCapNhat" class="btn btn-primary" type="button" ng-click="saveEdits(editProduct)">
+                        <ion-icon name="save"></ion-icon> Cập nhật
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

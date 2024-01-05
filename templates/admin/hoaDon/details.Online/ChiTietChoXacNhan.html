@@ -1,0 +1,184 @@
+<div class="container-fluid" layout:fragment="content" ng-controller="CTChoXacNhan">
+    <h1>CHI TIẾT HÓA ĐƠN</h1>
+
+    <div th:object="${hoaDon}">
+        <input type="hidden" id="IDHoaDonCXN" />
+        <p>Mã đơn: <span>{{ hoaDon.maHoaDon}}</span></p>
+        <p>Ngày tạo: <span>{{ hoaDon.createdDate | date:'dd/MM/yyyy' }}</span></p>
+        <p>Tên khách hàng: <span>{{ hoaDon.nguoiNhan}}</span></p>
+
+        <div>
+            <button
+                type="button"
+                class="dt-button buttons-html5 btn btn-white btn-success btn-bold"
+                data-toggle="tooltip"
+                title="Tải lại dữ liệu"
+                ng-click="danhSachSanPham()"
+                id="button-them-moi-san-pham-vaoHD"
+            >
+                <span> <i class="fas fa-plus"></i></span>
+                Thêm sản phẩm
+            </button>
+        </div>
+
+        <div class="table-wrapper" id="table-hd">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th data-field="state" data-checkbox="true"></th>
+                        <th scope="col">Sản phẩm</th>
+                        <th scope="col">Đơn giá</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Thành tiền</th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="CTChoXacNhan in hdct">
+                        <td>{{$index + 1}}</td>
+                        <td>
+                            <div style="display: flex; align-items: center">
+                                <img
+                                    src="/static/img/{{CTChoXacNhan.anhSanPham}}"
+                                    alt=""
+                                    style="margin-right: 10px"
+                                    width="100px"
+                                    height="100px"
+                                />
+
+                                <div>
+                                    <h6>
+                                        <strong>
+                                            <span style="text-transform: uppercase" class="TenSP"
+                                                >{{ CTChoXacNhan.sanPhamChiTiet.sanPham.tenSanPham}}</span
+                                            >
+                                        </strong>
+                                    </h6>
+                                    <div class="ThongTinSP">
+                                        <span>{{ CTChoXacNhan.sanPhamChiTiet.mauSac.tenMauSac}}</span>
+                                        <span>/</span>
+                                        <span>{{ CTChoXacNhan.sanPhamChiTiet.kichCo.kichCo}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{ CTChoXacNhan.donGia.toLocaleString('vi-VN') + ' VNĐ' }}</td>
+
+                        <td>
+                            <div class="button-group" id="button-group-GHCT">
+                                <input ng-model="CTChoXacNhan.soLuong" />
+                                <button
+                                    ng-click="updateSoLuong(CTChoXacNhan)"
+                                    id="xacNhan-updateSoLuongGioHangCT"
+                                    class="fas fa-check btn-icon btn-primary"
+                                ></button>
+                            </div>
+                        </td>
+
+                        <td>{{ CTChoXacNhan.thanhTien.toLocaleString('vi-VN') + ' VNĐ' }}</td>
+
+                        <td>
+                            <div class="button-group">
+                                <button
+                                    type="button"
+                                    class="btn btn-link btn-sm btn-rounded"
+                                    ng-click="deleteHDCT(CTChoXacNhan)"
+                                >
+                                    <i class="bx bx-trash me-2"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Tổng giá trị đơn hàng: <span>{{ hoaDon.tongTienHoaDon.toLocaleString('vi-VN') + ' VNĐ' }}</span></p>
+        <p>Phí vận chuyển: <span>{{ hoaDon.tienShip.toLocaleString('vi-VN') + ' VNĐ' }}</span></p>
+        <p>
+            Giảm giá:
+            <span>{{ hoaDon.tienGiam.toLocaleString('vi-VN') + ' VNĐ' }}</span>
+        </p>
+        <p>Tổng tiền thanh toán: <span>{{ hoaDon.tongTienDonHang.toLocaleString('vi-VN') + ' VNĐ' }}</span></p>
+        <p>Trạng thái thanh toán: <span>{{ hoaDon.loaiHoaDon==0?"Thanh toán khi nhận hàng":"Đã thanh toán" }}</span></p>
+    </div>
+
+    <br />
+    <hr />
+    <div class="mx-auto">
+        <h1>Lịch sử hoá đơn</h1>
+    </div>
+    <div class="container-fluid">
+        <div class="table-wrapper">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Ngày thực hiện</th>
+                        <th scope="col">Người thực hiện</th>
+                        <th scope="col">Thao tác</th>
+                        <th scope="col">Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="lsHoaDons in lsHoaDons">
+                        <td>{{lsHoaDons.ngayTao| date:'dd/MM/yyyy' }}</td>
+                        <td>{{lsHoaDons.nguoiThaoTac}}</td>
+                        <td>{{lsHoaDons.thaoTac}}</td>
+                        <td>Thành công</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br />
+    <br />
+    <hr />
+    <br />
+
+    <div class="container-fluid">
+        <div class="main-timeline">
+            <div class="timeline">
+                <div class="icon"></div>
+                <div class="date-content">
+                    <div class="date-outer">
+                        <span class="date">
+                            <span class="month">{{timeLine.createdDate | date:'dd/MM/yyyy'}}</span>
+                            <span class="hour"></span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="timeline-content">
+                    <h5 class="title">Chờ xác nhận</h5>
+                    <p class="description"><strong>Thao tác: </strong>Tạo đơn hàng</p>
+                    <p><strong>Người tạo đơn: </strong><span>{{timeLine.nguoiThaoTac}}</span></p>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div class="button-group" id="button-chiTietHoaDon">
+            <!--XÁC NHẬN ĐƠN HÀNG-->
+            <button class="action-button XacNhanDon" ng-click="confirm ()">
+                Xác nhận
+                <i class="fas fa-check"></i>
+            </button>
+
+            <!--HỦY ĐƠN HÀNG-->
+            <button class="action-button HuyDon" ng-click="refuseBill()">
+                Hủy đơn
+                <i class="fas fa-times"></i>
+            </button>
+
+            <button class="action-button inHoaDonChiTiet" ng-click="inHoaDon()">
+                In hóa đơn
+                <i class="fas fa-receipt"></i>
+            </button>
+            <button class="action-button" ng-click="quayLai()">
+                Quay lại
+                <i class="fas fa-arrow-left"></i>
+            </button>
+        </div>
+    </div>
+</div>

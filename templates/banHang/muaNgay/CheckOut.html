@@ -1,0 +1,233 @@
+<!doctype html>
+<html ng-app="MuaNgayApp">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Đặt hàng</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.js"></script>
+        <link rel="stylesheet" href="/static/sales/online/BanHangOnline.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="/static/sales/online/BanHangOnline.js"></script>
+        <script src="/static/sales/online/muaNgay/MuaNgay.App.js"></script>
+        <script src="/static/sales/online/muaNgay/MuaNgayController.js"></script>
+    </head>
+
+    <body>
+        <div class="container-fluid" ng-controller="MuaNgayController">
+            <div class="row">
+                <div class="col-md-6 left-panel">
+                    <div class="container">
+                        <div class="sub-panel diaChi">
+                            <h1 class="text-thuongHieu">ADUDAS</h1>
+                            <a th:href="@{/customer/gio-hang-chi-tiet}" class="cart-link">Giỏ hàng</a>
+                            <span class="icon-separator">›</span>
+                            <span class="info-text">Thông tin thanh toán</span>
+
+                            <p class="cac-title" id="thongTinGiaohang">Thông tin giao hàng</p>
+
+                            <div>
+                                <input
+                                    type="text"
+                                    id="checkOut-HoTen"
+                                    name="hoTen"
+                                    placeholder="Nhập họ và tên"
+                                    ng-model="hoTen"
+                                />
+                                <input
+                                    type="text"
+                                    id="checkOut-SDT"
+                                    name="sdt"
+                                    placeholder="Nhập số điện thoại"
+                                    ng-model="soDienThoai"
+                                />
+                                <input
+                                    type="text"
+                                    id="checkOut-email"
+                                    name="nhapEmail"
+                                    placeholder="Nhập email"
+                                    ng-model="email"
+                                />
+                                <input
+                                    type="text"
+                                    id="checkOut-diaChi"
+                                    name="addressInput"
+                                    placeholder="Nhập địa chỉ"
+                                    ng-model="diaChi"
+                                />
+                            </div>
+
+                            <div class="chon-dia-chi">
+                                <div>
+                                    <select id="province" class="tinhThanhPho">
+                                        <option value="">Chọn Tỉnh/Thành phố</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select id="district" disabled class="chonQuanHuyen">
+                                        <option value="">Chọn Quận/Huyện</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select id="ward" disabled class="chonPhuongXa">
+                                        <option value="">Chọn Phường/Xã</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <textarea
+                                id="note"
+                                name="note"
+                                placeholder="Nhập ghi chú cho đơn hàng"
+                                ng-model="ghiChu"
+                            ></textarea>
+                        </div>
+
+                        <hr />
+                        <p class="cac-title">Phương thức thanh toán</p>
+                        <div class="sub-panel thanhToan">
+                            <di class="radioThanhToan">
+                                <div>
+                                    <input type="radio" id="shipCOD" name="paymentMethod" value="method1" />
+                                    <label for="shipCOD" class="payment-label" id="thanhToanKhiNhanHang">
+                                        <i class="fas fa-truck"></i>
+                                        <span>Thanh toán khi nhận hàng</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="VNPAY" name="paymentMethod" value="method2" />
+                                    <label for="VNPAY" class="payment-label" id="chuyenKhoanNganHang">
+                                        <i class="fas fa-university"></i>
+                                        <span>Thanh toán qua VNPAY</span>
+                                    </label>
+                                </div>
+                            </di>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 right-panel">
+                    <div class="table-wrapper">
+                        <table class="tablea">
+                            <thead>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="product-row" ng-repeat="hoaDonChiTiet in hoaDonChiTiet">
+                                    <td>
+                                        <div style="display: flex; align-items: center">
+                                            <!-- <img th:src="${'/customer/images/' + tenAnhChinhList[iter.index]}" alt=""
+                                            style="margin-right: 10px;" width="100px" height="100px"> -->
+                                            <img
+                                                src="/static/img/{{hoaDonChiTiet.anhSanPham}}"
+                                                style="margin-right: 10px"
+                                                width="100px"
+                                                height="100px"
+                                            />
+                                            <div>
+                                                <h6>
+                                                    <strong>
+                                                        <span style="text-transform: uppercase" class="TenSP"
+                                                            >{{hoaDonChiTiet.sanPhamChiTiet.sanPham.tenSanPham}}</span
+                                                        >
+                                                    </strong>
+                                                </h6>
+                                                <div class="ThongTinSP">
+                                                    <span>{{hoaDonChiTiet.sanPhamChiTiet.mauSac.tenMauSac}}</span>
+                                                    <span>/</span>
+                                                    <span>{{hoaDonChiTiet.sanPhamChiTiet.kichCo.kichCo}}</span>
+                                                    <br />
+                                                    <span
+                                                        ng-bind="hoaDonChiTiet.sanPhamChiTiet.sanPham.gia.toLocaleString('vi-VN') + ' VNĐ'"
+                                                    ></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{{hoaDonChiTiet.soLuong}}</td>
+                                    <td>{{hoaDonChiTiet.thanhTien.toLocaleString('vi-VN')}} VNĐ</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr />
+                    <br />
+                    <div>
+                        <div class="div-maGiamGia">
+                            <select
+                                id="maGiamGia"
+                                class="maGiamGia"
+                                name="maGiamGia"
+                                ng-model="KhuyenMaiDangChon"
+                                ng-change="onKhuyenMaiChange()"
+                            >
+                                <option value="">Chọn mã giảm giá</option>
+                                <option
+                                    id="KhuyenMaiDangChon"
+                                    ng-repeat="km in khuyenMai"
+                                    value="{{km.id}}"
+                                    class="option"
+                                >
+                                    {{km.tenKhuyenMai}}
+                                </option>
+                            </select>
+                            <button class="btn-apply themMaGiamGiaOnline" type="submit" ng-click="addKhuyenMai()">
+                                SỬ DỤNG
+                            </button>
+                        </div>
+                    </div>
+                    <br />
+                    <hr />
+
+                    <p class="cart__discount">
+                        Tạm tính: <span id="subtotal"> {{tienTamTinh.toLocaleString('vi-VN') + ' VNĐ' }}</span>
+                    </p>
+
+                    <p class="cart__discount">
+                        <label for="shippingFee">Phí vận chuyển: </label>
+                        <label type="text" id="shippingFee" readonly
+                            >{{tienShip.toLocaleString('vi-VN') + ' VNĐ' }}</label
+                        >
+                    </p>
+
+                    <p class="cart__discount">
+                        Giảm giá đã áp dụng:
+                        <span id="tenGiamGia">{{hoaDon.khuyenMai.tenKhuyenMai}}</span>
+                    </p>
+                    <p class="cart__discount">
+                        Giảm giá:
+                        <span id="discount">{{hoaDon.tienGiam.toLocaleString('vi-VN') + ' VNĐ' }}</span>
+                    </p>
+
+                    <hr />
+                    <p class="tongCongTien">
+                        Tổng cộng:
+                        <span id="total">{{tongTienHoaDon.toLocaleString('vi-VN') + ' VNĐ' }}</span>
+                    </p>
+
+                    <a ng-click="quayLai()" class="cart-link2">Sản phẩm</a>
+
+                    <div class="button-container">
+                        <div class="button-group">
+                            <button type="submit" id="buttonThanhToan" class="button-thanhToan" ng-click="thanhToan()">
+                                Thanh toán
+                            </button>
+
+                            <button id="buttonDatHang" class="button-datHang" ng-click="datHang()">Đặt hàng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

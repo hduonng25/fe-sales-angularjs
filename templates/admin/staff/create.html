@@ -1,0 +1,148 @@
+<div class="container-fluid" ng-controller="CreateNhanVienController">
+    <div class="card mb-4">
+        <div class="card-header">Thêm nhân viên</div>
+
+        <div id="container-scan">
+            <div id="quetqr" class="container-fluid">
+                <button id="scanButton" ng-click="batDauQuet()">
+                    Quét QR
+                    <span>
+                        <i class="fas fa-qrcode"></i>
+                    </span>
+                </button>
+
+                <video id="preview"></video>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <form>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-check-label" for="inputSoCanCuoc">Số căn cước</label>
+                        <input
+                            class="form-control"
+                            id="inputSoCanCuoc"
+                            type="text"
+                            placeholder="Số căn cước nhân viên"
+                            ng-model="createStaff.soCanCuoc"
+                            readonly
+                        />
+                    </div>
+
+                    <div class="col-md-6" style="margin-top: 30px">
+                        <label class="form-check-label" for="inputLastName">Giới tính</label>
+                        <div class="form-check form-check-inline" style="margin-left: 30px">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio1"
+                                value="true"
+                                ng-model="createStaff.gioiTinh"
+                            />
+                            <label class="form-check-label" for="inlineRadio1">Nam</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="inlineRadioOptions"
+                                id="inlineRadio2"
+                                value="false"
+                                ng-model="createStaff.gioiTinh"
+                            />
+                            <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-check-label" for="inputUsername">Họ tên</label>
+                        <input
+                            class="form-control"
+                            id="inputName"
+                            type="text"
+                            placeholder="Tên nhân viên"
+                            ng-model="createStaff.hoTen"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-check-label" for="inputLocation">Số điện thoại</label>
+                        <input
+                            class="form-control"
+                            id="inputPhone"
+                            type="text"
+                            placeholder="Nhập số điện thoại"
+                            ng-model="createStaff.soDienThoai"
+                        />
+                    </div>
+                </div>
+
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-check-label" for="inputLastName">Ngày sinh</label>
+                        <input
+                            class="form-control"
+                            id="inputDob"
+                            type="date"
+                            placeholder="Nhập ngày sinh"
+                            ng-model="createStaff.ngaySinh"
+                            readonly
+                        />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-check-label" for="inputLastName">Email</label>
+                        <input
+                            class="form-control"
+                            id="inputEmail"
+                            type="text"
+                            placeholder="Nhập email"
+                            ng-model="createStaff.email"
+                        />
+                    </div>
+                </div>
+
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-check-label" for="inputLastName">Địa chỉ</label>
+                        <input
+                            class="form-control"
+                            id="inputAddress"
+                            type="text"
+                            placeholder="Nhập địa chỉ"
+                            ng-model="createStaff.diaChi"
+                            readonly
+                        />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="matKhau">Mật khẩu</label>
+                        <input
+                            class="form-control"
+                            id="matKhau"
+                            type="password"
+                            placeholder="Nhập mật khẩu"
+                            ng-model="createStaff.matKhau"
+                        />
+                    </div>
+                </div>
+            </form>
+
+            <div style="margin-top: 30px; float: right">
+                <button id="button-troVo-nhanVien" type="button" ng-click="returnCreate()">
+                    <i class="fas fa-arrow-left"></i> Trở về
+                </button>
+
+                <button id="button-them-nhanVien" type="button" ng-click="reload()">
+                    <i class="fas fa-sync-alt"></i> Tải lại
+                </button>
+
+                <button id="button-them-nhanVien" type="button" ng-click="saveCreateStaff(createStaff)">
+                    <i class="fas fa-save"></i> Lưu
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

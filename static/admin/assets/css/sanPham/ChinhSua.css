@@ -1,0 +1,26 @@
+/* CSS để điều chỉnh nút và icon */
+#btnQuayLai,
+#btnCapNhat {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+#btnQuayLai ion-icon,
+#btnCapNhat ion-icon {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+#btnQuayLai:hover,
+#btnCapNhat:hover {
+    background-color: #2980b9;
+}

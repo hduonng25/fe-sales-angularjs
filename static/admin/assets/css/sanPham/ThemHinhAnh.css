@@ -1,0 +1,116 @@
+/* Add this new style for image row */
+.image-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Update existing styles */
+
+#imagePreview img {
+    width: 100%;
+    height: auto;
+    margin-left: 50px;
+    max-width: 200px;
+    max-height: 200px;
+    margin-right: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.image-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.image-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 35px;
+}
+
+.image-buttons button {
+    margin-bottom: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    width: 200px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.image-buttons button ion-icon {
+    margin-right: 5px;
+}
+
+.image-buttons button:hover {
+    background-color: #0056b3;
+}
+
+#h1-XemTruoc {
+    margin-top: 30px;
+    color: #5cacee; /* Màu chữ */
+    font-weight: bold; /* Chữ in đậm */
+    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+    position: relative;
+    text-align: center; /* Để tạo vị trí tương đối cho phần tử con */
+}
+
+#h1-XemTruoc::after {
+    content: ''; /* Tạo một phần tử giả để làm background */
+    position: absolute; /* Vị trí tuyệt đối so với phần tử cha */
+    bottom: 0; /* Chạm vào đáy của phần tử cha */
+    left: 0; /* Nằm ở góc trái của phần tử cha */
+    width: 100%; /* Chiều rộng là 100% của phần tử cha */
+    height: 8px; /* Độ dày của phần tử giả, tạo ra đường line dưới */
+    z-index: -1; /* Đặt z-index để nó hiển thị phía sau văn bản */
+}
+
+/* Add this style for the full-width input */
+.full-width-input {
+    width: 100%;
+}
+
+/* Add this style for the complete button */
+.complete-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    float: right;
+}
+
+.complete-button ion-icon {
+    margin-right: 10px;
+}
+
+.complete-button:hover {
+    background-color: #218838;
+}
+
+/* Add this style for the row containing product details */
+.row.mb-4 {
+    background-color: #f8f9fa; /* Màu nền */
+    padding: 15px; /* Khoảng cách giữa các phần tử và đường viền */
+    border: 1px solid #dee2e6; /* Đường viền */
+    border-radius: 5px; /* Bo tròn góc */
+}
+
+.row.mb-4 h5 {
+    margin-bottom: 0; /* Loại bỏ khoảng cách dưới của tiêu đề */
+}
+
+.row.mb-4 h5 strong {
+    color: #007bff; /* Màu chữ cho phần in đậm */
+}

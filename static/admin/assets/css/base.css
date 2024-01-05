@@ -1,0 +1,36 @@
+a {
+    text-decoration: none !important;
+}
+
+/* Đảm bảo rằng các nút và input nằm trên cùng một dòng */
+.d-flex {
+    display: flex;
+    align-items: center;
+}
+
+/* Đặt khoảng cách 5px giữa các phần tử con */
+.d-flex > * {
+    margin-right: 5px;
+}
+
+.d-flex input {
+    width: 200px;
+}
+
+.d-flex button {
+    height: 32px;
+}
+
+.btn-link:focus {
+    outline: none !important;
+}
+
+.btn-link:hover {
+    outline: none !important;
+    transform: scale(1.5);
+    transition: transform 0.2s;
+}
+
+.button-group.button-bill {
+    float: right;
+}

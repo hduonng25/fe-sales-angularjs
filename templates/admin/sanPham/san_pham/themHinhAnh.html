@@ -1,0 +1,47 @@
+<div id="container-fluid" ng-controller="ImgController">
+    <h1>Thêm ảnh sản phẩm</h1>
+    <br />
+    <div id="productInfo" ng-repeat="spcts in spct">
+        <div class="row mb-4">
+            <h5>Tên sản phẩm: <strong>{{ spcts.sanPham.tenSanPham }}</strong></h5>
+            <h5>Màu sắc: <strong>{{ spcts.mauSac.tenMauSac}}</strong></h5>
+        </div>
+
+        <h2 for="imagePreview" id="h1-XemTruoc">Xem trước</h2>
+        <div id="imagePreview" class="mb-3 col-12">
+            <div class="image-row">
+                <div ng-repeat="hinhAnh in spcts.hinhAnh" class="image-item">
+                    <img src="/static/img/{{hinhAnh.tenAnh}}" style="width: 300px; height: 250px" />
+                    <div class="image-buttons">
+                        <button ng-click="setAnhMacDinh(hinhAnh, spcts)">
+                            <ion-icon name="star-outline"></ion-icon> Đặt ảnh mặc định
+                        </button>
+                        <button ng-click="xoaAnh(hinhAnh, spcts)">
+                            <ion-icon name="trash-outline"></ion-icon> Xóa
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="fileInputSection" class="row mb-4">
+            <div>
+                <label for="formFile{{spcts.id}}" class="form-label">Chọn ảnh</label>
+                <input
+                    class="form-control full-width-input"
+                    type="file"
+                    accept="image/*"
+                    id="formFile{{spcts.id}}"
+                    multiple
+                    ng-click="showSelectedImage($event, spcts)"
+                    ng-model="fileName"
+                    file-change="hienThiAnh($event, spcts)"
+                />
+            </div>
+        </div>
+        <hr />
+    </div>
+    <button class="complete-button" type="button" ng-click="themAnhSanPhamHT()">
+        <ion-icon name="checkmark-circle-outline"></ion-icon> Hoàn tất thêm ảnh sản phẩm
+    </button>
+</div>

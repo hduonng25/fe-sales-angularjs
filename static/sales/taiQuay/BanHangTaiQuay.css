@@ -1,0 +1,81 @@
+#table-BanHangTaiQuay {
+    max-height: 400px;
+}
+
+.table-responsive {
+    max-height: 600px;
+}
+
+.quantity-input {
+    border: none;
+}
+
+.quantity-input:focus {
+    outline: none;
+}
+
+.full-width-row {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#inputKhuyenMai {
+    border: none;
+}
+
+#inputKhuyenMai:focus {
+    outline: none;
+}
+
+.tienKhachDua-input:hover {
+    border: none;
+}
+
+input:hover,
+input:focus {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+select:hover,
+select:focus {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.xoaHDCT {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    background-color: #f8f9fa;
+}
+
+.xoaHDCT:hover,
+.xoaHDCT:focus {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.create-invoice-button {
+    background-color: #6c63ff;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    float: right;
+}
+
+.search-button:hover,
+.create-invoice-button:hover {
+    background-color: #b3d7ff;
+}
+
+.search-button,
+.create-invoice-button {
+    margin-left: 10px;
+}

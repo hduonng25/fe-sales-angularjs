@@ -1,0 +1,179 @@
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* Style cho từng tab button */
+.tab-button {
+    width: 200px;
+    /* Kích thước cố định cho các nút tab */
+    height: 50px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    /* Khoảng cách giữa các nút tab */
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Style cho tab button được chọn */
+.tab-button.active {
+    background-color: #696cff;
+    color: #fff;
+    border-color: #696cff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover effect */
+.tab-button:hover {
+    background-color: #f2f2f2;
+    color: #333;
+    transform: scale(1.05);
+}
+
+/* Biểu tượng mũi tên */
+.tab-button::before {
+    content: '→';
+    /* Sử dụng mũi tên nghiêng sang phải */
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    /* Điều chỉnh vị trí của mũi tên */
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect cho biểu tượng mũi tên */
+.tab-button:hover::before {
+    transform: translate(10px, -50%);
+    /* Di chuyển mũi tên khi hover */
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.fromSearchBill {
+    margin-bottom: 30px;
+}
+
+#tableBillChoXacNhan th,
+#tableBillChoXacNhan td {
+    text-align: center;
+}
+h1 {
+    color: #696cff;
+    font-size: 35px;
+    text-align: center;
+    margin: 20px 0;
+    text-transform: uppercase;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+/* button trở lại */
+.back-button {
+    padding: 5px 20px;
+    background-color: #4672ed;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+.back-button:hover {
+    background-color: #555;
+}
+
+.back-button {
+    top: 20px;
+    left: 20px;
+}
+
+.back-button {
+    font-weight: bold;
+}
+/* 
+    timeline */
+
+body {
+    background: #eee;
+    margin-top: 20px;
+}
+.hori-timeline .events {
+    border-top: 3px solid #e9ecef;
+}
+.hori-timeline .events .event-list {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding-top: 70px;
+    margin-right: 0;
+}
+.hori-timeline .events .event-list:before {
+    content: '';
+    position: absolute;
+    height: 36px;
+    border-right: 2px dashed #dee2e6;
+    top: 0;
+}
+.hori-timeline .events .event-list .event-date {
+    position: absolute;
+    top: 38px;
+    left: 0;
+    right: 0;
+    width: 150px;
+    margin: 0 auto;
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+@media (min-width: 1140px) {
+    .hori-timeline .events .event-list {
+        display: inline-block;
+        width: 24%;
+        padding-top: 45px;
+    }
+    .hori-timeline .events .event-list .event-date {
+        top: -12px;
+    }
+}
+.bg-soft-primary {
+    background-color: rgba(64, 144, 203, 0.3) !important;
+}
+.bg-soft-success {
+    background-color: rgba(71, 189, 154, 0.3) !important;
+}
+.bg-soft-danger {
+    background-color: rgba(231, 76, 94, 0.3) !important;
+}
+.bg-soft-warning {
+    background-color: rgba(249, 213, 112, 0.3) !important;
+}
+.card {
+    border: none;
+    margin-bottom: 24px;
+    -webkit-box-shadow: 0 0 13px 0 rgba(236, 236, 241, 0.44);
+    box-shadow: 0 0 13px 0 rgba(236, 236, 241, 0.44);
+}
+
+#button-them-moi-san-pham-vaoHD {
+    border-radius: 10px;
+    background-color: #87cefa;
+    border: none;
+    margin-bottom: 10px;
+    margin-left: 1410px;
+}
+
+#button-them-moi-san-pham-vaoHD:hover {
+    filter: brightness(90%);
+    background-color: #5cacee;
+}

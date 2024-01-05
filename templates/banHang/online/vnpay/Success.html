@@ -1,0 +1,137 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Payment Result</title>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.js"></script>
+        <meta charset="UTF-8" />
+        <style>
+            /* payment_result.css */
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+            }
+
+            .container {
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 40px;
+                background-color: #fff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .header {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .header img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .header h1 {
+                color: #338dbc;
+            }
+
+            .payment-details {
+                text-align: center;
+            }
+
+            .payment-details h3 {
+                color: #333;
+            }
+
+            .payment-details p,
+            .payment-details h2 {
+                color: #555;
+                margin-bottom: 10px;
+            }
+
+            .redirect-message {
+                text-align: center;
+                margin-top: 30px;
+                margin-bottom: 20px;
+                font-size: 18px;
+            }
+
+            .back-button {
+                display: block;
+                width: 100px;
+                margin: 0 auto;
+                text-align: center;
+                padding: 10px 0;
+                color: #fff;
+                background-color: #338dbc;
+                border-radius: 4px;
+                text-decoration: none;
+            }
+
+            .back-button:hover {
+                background-color: #0056b3;
+            }
+
+            /* Hiệu ứng xoay vòng tròn */
+            .circle-loader {
+                border: 6px solid #f3f3f3;
+                /* Màu nền xung quanh */
+                border-top: 6px solid #338dbc;
+                /* Màu nền trên */
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                animation: spin 2s linear infinite;
+                /* Animation cho xoay */
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="header">
+                <h1>Thanh toán thành công!</h1>
+            </div>
+            <div class="payment-details">
+                <h2>
+                    <span th:text="${#numbers.formatDecimal(soTienHoaDon, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></span>
+                </h2>
+            </div>
+            <div class="circle-loader"></div>
+            <div class="redirect-message">
+                <p>Bạn sẽ trở về trang của Nhà cung cấp sau <span id="countdown"></span> giây</p>
+            </div>
+            <a class="back-button" href="http://127.0.0.1:5501/templates/customer/home/index.html#!/">Quay về</a>
+        </div>
+
+        <script>
+            const countdownElement = document.getElementById('countdown');
+            let countdownValue = 5;
+            const redirectUrl = 'http://127.0.0.1:5501/templates/customer/home/index.html#!/';
+
+            function updateCountdown() {
+                countdownElement.innerText = countdownValue;
+                countdownValue--;
+
+                if (countdownValue < 0) {
+                    location.href = redirectUrl;
+                } else {
+                    setTimeout(updateCountdown, 1000);
+                }
+            }
+
+            window.onload = updateCountdown;
+        </script>
+    </body>
+</html>

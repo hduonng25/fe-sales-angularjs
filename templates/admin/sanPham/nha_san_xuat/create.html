@@ -1,0 +1,31 @@
+<div class="container-fluid" ng-controller="CreateProducerController" id="themMoiCtSP">
+    <div class="card mb-4">
+        <div class="card-header">Thêm nhà sản xuất</div>
+        <div class="card-body">
+            <form>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-12">
+                        <label class="small mb-1" for="name">Nhà sản xuất</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-industry"></i></span>
+                            <input
+                                class="form-control"
+                                id="name"
+                                type="text"
+                                placeholder="Nhập nhà sản xuất"
+                                ng-model="createProducer.name"
+                                required
+                            />
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" type="button" ng-click="returnCreate()">
+                    <i class="fas fa-arrow-left"></i> Quay lại
+                </button>
+                <button class="btn btn-primary" type="button" ng-click="saveCreate(createProducer)">
+                    <i class="fas fa-check"></i> Thêm mới
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

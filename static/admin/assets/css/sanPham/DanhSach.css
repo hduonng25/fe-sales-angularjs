@@ -1,0 +1,39 @@
+#button-them-san-pham {
+    margin-bottom: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    width: 190px;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    border-radius: 20px;
+    float: right;
+}
+
+#button-them-san-pham ion-icon {
+    margin-right: 8px;
+    font-size: 1.5em;
+}
+
+#button-them-san-pham:hover {
+    background-color: #2980b9;
+}
+
+#button-tim-kiem {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    height: 40px;
+}

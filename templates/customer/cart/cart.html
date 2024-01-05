@@ -1,0 +1,147 @@
+<div ng-controller="cartController" id="cartList">
+    <div class="container-fluid my-auto d-flex align-items-center">
+        <div class="mx-auto">
+            <h1 style="margin-top: 50px">Giỏ hàng</h1>
+        </div>
+    </div>
+    <div class="untree_co-section before-footer-section">
+        <div class="container-fluid">
+            <div class="row mb-5">
+                <form class="col-md-12" method="post">
+                    <div class="site-blocks-table">
+                        <table class="table" id="selectAllCheckbox">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input
+                                            type="checkbox"
+                                            class="form-check-input"
+                                            ng-model="selectAll"
+                                            ng-change="toggleSelectAll()"
+                                        />
+                                    </th>
+                                    <th class="product-thumbnail">Hình ảnh</th>
+                                    <th class="product-name">Sản phẩm</th>
+                                    <th class="product-price">Giá tiền</th>
+                                    <th class="product-quantity">Số lượng</th>
+                                    <th class="product-total">Thành tiền</th>
+                                    <th class="product-remove">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="gioHangChiTiet in gioHangChiTiet">
+                                    <td>
+                                        <input
+                                            type="checkbox"
+                                            class="form-check-input"
+                                            ng-model="gioHangChiTiet.selected"
+                                            ng-change="selectedGioHangChiTiet(gioHangChiTiet)"
+                                        />
+                                    </td>
+                                    <td>
+                                        <img
+                                            src="/static/img/{{gioHangChiTiet.anh_san_pham}}"
+                                            width="80px"
+                                            ,
+                                            height="80px"
+                                        />
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <h6>
+                                                <strong>
+                                                    <span style="text-transform: uppercase" class="TenSP"
+                                                        >{{ gioHangChiTiet.sanPhamChiTiet.sanPham.tenSanPham }}</span
+                                                    >
+                                                </strong>
+                                            </h6>
+                                            <div class="ThongTinSP">
+                                                <span>{{gioHangChiTiet.sanPhamChiTiet.mauSac.tenMauSac}}</span>
+                                                <span>/</span>
+                                                <span>{{gioHangChiTiet.sanPhamChiTiet.kichCo.kichCo}}</span>
+                                                <br />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{{ gioHangChiTiet.sanPhamChiTiet.sanPham.gia.toLocaleString('vi-VN')}} VNĐ</td>
+                                    <td>
+                                        <div class="button-group" id="button-group-GHCT">
+                                            <input ng-model="gioHangChiTiet.soLuong" />
+                                            <button
+                                                ng-click="updateSoLuong(gioHangChiTiet)"
+                                                id="xacNhan-updateSoLuongGioHangCT"
+                                                class="fas fa-check btn-icon btn-primary"
+                                            ></button>
+                                        </div>
+                                    </td>
+
+                                    <td>{{ gioHangChiTiet.thanhTien.toLocaleString('vi-VN')}} VNĐ</td>
+                                    <td>
+                                        <div class="button-group">
+                                            <button
+                                                type="button"
+                                                class="btn btn-link btn-sm btn-rounded"
+                                                ng-click="deletecart(gioHangChiTiet)"
+                                            >
+                                                <i class="bx bx-trash me-2"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row mb-5">
+                        <div class="col-md-3 mt-3">
+                            <button
+                                class="btn btn-outline-black btn-sm btn-block"
+                                style="border-radius: 10px"
+                                ng-click="tiepTucMuaSam()"
+                            >
+                                Tiếp tục mua sắm
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 pl-5">
+                    <div class="row justify-content-end">
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-12 text-right border-bottom mb-5">
+                                    <h3 class="text-black h4 text-uppercase">Tạm tính</h3>
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col-md-6">
+                                    <span class="text-black">Tiền tạm tính</span>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <strong class="text-black"
+                                        ><span
+                                            id="cart-tienTamTinh"
+                                            ng-bind="tienTamTinh.toLocaleString('vi-VN') + ' VNĐ'"
+                                            ng-model="tienTamTinh"
+                                        ></span
+                                    ></strong>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-black btn-lg py-3 btn-block" ng-click="checkOut()">
+                                        Đặt hàng
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

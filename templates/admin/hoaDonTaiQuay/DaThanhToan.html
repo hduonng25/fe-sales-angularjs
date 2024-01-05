@@ -1,0 +1,89 @@
+<div class="container-fluid" ng-controller="DaThanhToanController">
+    <div class="container-fluid my-auto d-flex align-items-center">
+        <div class="mx-auto">
+            <h1>Hoá đơn đã thanh toán</h1>
+        </div>
+    </div>
+    <div class="container-fluid my-auto d-flex align-items-center">
+        <div class="mx-auto">
+            <div class="tab-buttons">
+                <a href="#!/da-thanh-toan" class="tab-button active">Đã thanh toán</a>
+                <a href="#!/list-CounterBill" class="tab-button">Đã huỷ</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between fromSearchBill">
+            <div class="d-flex">
+                <input
+                    class="form-control me-1"
+                    type="search"
+                    placeholder="Tìm kiếm"
+                    aria-label="search"
+                    ng-model="search"
+                />
+
+                <input
+                    class="form-control me-1"
+                    type="date"
+                    placeholder="search"
+                    aria-label="search"
+                    ng-model="searchDate"
+                />
+                <button class="btn btn-primary btn-sm" type="submit" ng-click="searchDateBill(searchDate)">
+                    Tìm kiếm
+                </button>
+
+                <button
+                    type="button"
+                    class="dt-button buttons-html5 btn btn-white btn-success btn-bold"
+                    data-toggle="tooltip"
+                    title="Tải lại dữ liệu"
+                    ng-click="reLoad()"
+                >
+                    <span> <i class="fas fa-sync-alt"></i></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <table class="table align-middle mb-1 bg-white" id="tableBillDaThanhToans">
+        <thead class="bg-light">
+            <tr>
+                <th>#</th>
+                <th>Mã HD</th>
+                <th>Ngày Tạo</th>
+                <th>Người tạo</th>
+                <th>Người bán</th>
+                <th>Tổng tiền</th>
+                <th>Khách hàng</th>
+                <th>Số điện thoại</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pending in pager.pending">
+                <td>{{$index + 1}}</td>
+                <td>{{ pending.maHoaDon }}</td>
+                <td>{{ pending.createdDate | date:'dd/MM/yyyy' }}</td>
+                <td>{{ pending.createdby }}</td>
+                <td>{{ pending.nhanVien.hoTen }}</td>
+                <td>{{ pending.tongTienDonHang.toLocaleString('vi-VN') + ' VNĐ'}}</td>
+                <td>{{ pending.nguoiNhan}}</td>
+                <td>{{ pending.sdtnguoiNhan}}</td>
+
+                <td>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-link" ng-click="look(pending)">
+                            <i class="bx bx-edit me-2"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="card-footer text-center">
+        <button class="btn active" ng-repeat="pageNumber in pager.pageNumbers" ng-click="pager.page = pageNumber">
+            {{pageNumber}}
+        </button>
+    </div>
+</div>

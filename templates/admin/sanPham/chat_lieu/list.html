@@ -1,0 +1,84 @@
+<div ng-controller="MaterialController" id="materialList">
+    <div class="container-fluid my-auto d-flex align-items-center">
+        <div class="mx-auto">
+            <h1 class="text-center">Chất liệu sản phẩm</h1>
+        </div>
+        <button type="button" id="button-them-san-pham" ng-click="createMateriall(promotion)">
+            <ion-icon name="add-circle"></ion-icon> Thêm chất liệu
+        </button>
+    </div>
+    <br />
+    <div class="table-responsive">
+        <table id="myTable">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Chất liệu</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="promotion in pager.promotions">
+                    <td>{{$index + 1}}</td>
+                    <td>{{ promotion.chatLieu }}</td>
+                    <td>
+                        <div class="button-group">
+                            <button type="button" class="btn btn-link" ng-click="editMaterial(promotion)">
+                                <i class="bx bx-edit me-2"></i>
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-link btn-sm btn-rounded"
+                                ng-click="deleteMaterial(promotion)"
+                            >
+                                <i class="bx bx-trash me-2"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Confirm Delete Modal -->
+    <div
+        class="modal fade"
+        ng-attr-id="confirmDeleteModal_{{ promotion.id }}"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="confirmDeleteModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">Bạn có chắc chắn muốn xóa?</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                    <button
+                        type="button"
+                        class="btn btn-danger"
+                        ng-click="deleteMaterial(promotion)"
+                        data-dismiss="modal"
+                    >
+                        Xóa
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center">
+        <button
+            class="btn btn-secondary mx-1"
+            ng-repeat="pageNumber in pager.pageNumbers"
+            ng-click="pager.page = pageNumber"
+        >
+            {{pageNumber}}
+        </button>
+    </div>
+</div>

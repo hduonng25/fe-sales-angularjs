@@ -1,0 +1,166 @@
+<div ng-controller="ProductController" id="productList">
+    <div class="container-fluid my-auto d-flex align-items-center">
+        <div class="mx-auto">
+            <h1 style="text-align: center">DANH SÁCH SẢN PHẨM</h1>
+        </div>
+    </div>
+    <div class="bg-light">
+        <form id="productFilter" style="padding: 25px; border: 1px solid #ddd; border-radius: 10px">
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Loại sản phẩm</label>
+                    <select class="form-select" ng-model="idloaiSanPham" ng-change="filterByLoaiSp()">
+                        <option value="">Chọn loại sản phẩm</option>
+                        <option ng-repeat="lsp in loaiSanPham" value="{{lsp.id}}" ng-selected="lsp.id == idloaiSanPham">
+                            {{lsp.loaiSanPham}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Chất liệu</label>
+                    <select class="form-select" ng-model="id_chat_lieu" ng-change="filterByChatLieu()">
+                        <option value="">Chọn chất liệu</option>
+                        <option ng-repeat="x in chatLieu" value="{{x.id}}" ng-selected="x.id == id_chat_lieu">
+                            {{x.chatLieu}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Nhà sản xuất</label>
+                    <select class="form-select" ng-model="id_nsx" ng-change="filterByNsx()">
+                        <option value="">Chọn nhà sản xuất</option>
+                        <option ng-repeat="nsx in nhaSanXuat" value="{{nsx.id}}" ng-selected="nsx.id == id_nsx">
+                            {{nsx.name}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Màu sắc</label>
+                    <select class="form-select" ng-model="mauSac_id" ng-change="filterByMauSac()">
+                        <option value="">Chọn màu sắc</option>
+                        <option ng-repeat="ms in mauSac" value="{{ms.id}}" ng-selected="ms.id == mauSac_id">
+                            {{ms.tenMauSac}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">Kích cỡ</label>
+                    <select class="form-select" ng-model="kichCo_id" ng-change="filterByKichCo()">
+                        <option value="">Chọn kích cỡ</option>
+                        <option ng-repeat="kc in kichCo" value="{{kc.id}}" ng-selected="kc.id == kichCo_id">
+                            {{kc.kichCo}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="gia1">Từ giá 1:</label>
+                    <input class="form-control" id="gia1" type="number" ng-model="gia1" />
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label class="form-label" for="gia2">Đến giá 2:</label>
+                    <input class="form-control" id="gia2" type="number" ng-model="gia2" />
+                </div>
+
+                <div class="col-md-3 mb-3 align-self-end">
+                    <button type="button" id="button-tim-kiem" ng-click="filterByGia()">Tìm kiếm theo giá</button>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label for="color" class="form-label">Tên sản phẩm</label>
+                    <input class="form-control" type="search" placeholder="Tìm kiếm" ng-model="searchTerm" />
+                </div>
+
+                <div class="col-md-2 mb-3 align-self-end">
+                    <button type="button" id="button-tim-kiem" ng-click="searchAll(searchTerm)">
+                        Tìm kiếm theo tên
+                    </button>
+                </div>
+
+                <div class="col-md-3 mb-3 align-self-end">
+                    <button type="button" id="button-tim-kiem" title="Tải lại dữ liệu" ng-click="reLoad()">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br />
+    <button type="button" id="button-them-san-pham" ng-click="create(promotion)">
+        <ion-icon name="add-circle"></ion-icon> Thêm sản phẩm
+    </button>
+    <br />
+    <table id="myTable">
+        <thead class="bg-light">
+            <tr>
+                <th>#</th>
+                <th>Hình ảnh</th>
+                <th>Sản phẩm</th>
+                <th>Giá</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="promotion in pager.promotions">
+                <td>{{ $index + 1 }}</td>
+                <td><img src="/static/img/{{promotion.anh_san_pham}}" style="height: 90px; width: 90px" /></td>
+                <td>
+                    <span>{{ promotion.tenSanPham }}</span>
+                </td>
+                <td>{{ promotion.gia.toLocaleString('vi-VN')}} VNĐ</td>
+                <td>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-link" ng-click="dsCTSP(promotion)">
+                            <i class="bx bx-edit me-2"></i>
+                        </button>
+                        <button type="button" class="btn btn-link btn-sm btn-rounded" ng-click="delete(promotion)">
+                            <i class="bx bx-trash me-2"></i>
+                        </button>
+                        <div
+                            class="modal fade"
+                            ng-attr-id="confirmDeleteModal_{{ promotion.id }}"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-labelledby="confirmDeleteModalLabel"
+                            aria-hidden="true"
+                        >
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">Bạn có chắc chắn muốn xóa?</div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            Hủy
+                                        </button>
+                                        <button type="button" class="btn btn-danger" id="confirmDeleteButton">
+                                            Xóa
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="card-footer text-center">
+        <button
+            class="btn btn-secondary mx-1"
+            ng-repeat="pageNumber in pager.pageNumbers"
+            ng-click="pager.page = pageNumber"
+        >
+            {{pageNumber}}
+        </button>
+    </div>
+</div>

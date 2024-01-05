@@ -1,0 +1,182 @@
+<section class="container-fluid" ng-controller="thongKeController">
+    <h1>Thống kê</h1>
+    <hr />
+    <div class="row mb-3">
+        <div class="row" style="margin-bottom: 20px">
+            <div class="col-md-4">
+                <p>Tổng doanh số</p>
+                <div class="card">
+                    <div class="card-body" style="text-align: center">
+                        <h5 class="card-title">Tổng doanh số</h5>
+                        <p class="card-text" id="doanhSo" style="color: red">
+                            {{ tongTien.toLocaleString('vi-VN')}} VNĐ
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <p>Tổng doanh số bán hàng online</p>
+                <div class="card">
+                    <div class="card-body" style="text-align: center">
+                        <h5 class="card-title">Tổng doanh số khách mua hàng</h5>
+                        <p class="card-text" id="doanhSo" style="color: red">
+                            {{ tongTien_online.toLocaleString('vi-VN')}} VNĐ
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <p>Tổng doanh số bán hàng tại quầy</p>
+                <div class="card">
+                    <div class="card-body" style="text-align: center">
+                        <h5 class="card-title">Tổng doanh số bán taị quầy</h5>
+                        <p class="card-text" id="doanhSo" style="color: red">
+                            {{ tongTien_offline.toLocaleString('vi-VN')}} VNĐ
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="dropdown mb-3">
+                <h2 style="text-align: center">Thống kê theo tháng</h2>
+                <p>Doanh số theo tháng, mặc định sẽ là tháng hiện tại</p>
+                <button
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    Chọn tháng
+                </button>
+                <p class="mt-4">Bạn đang xem tháng <strong>{{thangLoad}}</strong></p>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li ng-repeat="thang in thang">
+                        <a class="dropdown-item" ng-click="locTheoThang(thang)">{{thang}}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body" style="text-align: center">
+                        <h5 class="card-title">Doanh số tháng</h5>
+                        <p class="card-text" id="hangBanDuoc" style="color: red">
+                            {{tongTienThang.toLocaleString('vi-VN')}} VNĐ
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body" style="text-align: center">
+                        <h5 class="card-title">Hàng bán được</h5>
+                        <p class="card-text" id="hangBanDuoc" style="color: red">{{hangBanDuocThang}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+            <h2 style="text-align: center">Thống kê theo ngày</h2>
+            <p>Doanh số theo ngày, mặc định sẽ là ngày hiện tại</p>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body" style="text-align: center">
+                        <h5 class="card-title">Tạm tính hôm nay</h5>
+                        <p class="card-text" id="doanhSoNgay" style="color: red">
+                            {{tongTienHomNay.toLocaleString('vi-VN')}} VNĐ
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body" style="text-align: center">
+                        <h5 class="card-title">Tạm tính hàng bán được hôm nay</h5>
+                        <p class="card-text" id="doanhSoNgay" style="color: red">{{hangBanDuocHomNay}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+        <h2 style="text-align: center">Biểu đồ theo năm</h2>
+        <div class="col-md-12 table-responsive">
+            <div style="display: flex">
+                <div class="dropdown" style="margin-right: 10px">
+                    <button
+                        class="btn btn-secondary dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        Chọn năm
+                    </button>
+                    <p class="mt-4">Bạn đang xem năm <strong>{{namLoad}}</strong></p>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li ng-repeat="nam in nam">
+                            <a class="dropdown-item" ng-click="locTheoNam(nam)">{{nam}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card mt-3" style="width: 100%">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align: center">Biểu đồ thống kê</h5>
+                    <canvas id="myChart" style="max-width: 100%; max-height: 390px; font-size: 20px"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12 table-responsive">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title" style="text-align: center">Top 5 sản phẩm bán chạy nhất</h1>
+                    <table id="myTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Ảnh</th>
+                                <th scope="col">Tên sản phẩm</th>
+                                <th scope="col">Màu sắc</th>
+                                <th scope="col">Kích cỡ</th>
+                                <th scope="col">Số lượng bán</th>
+                                <th scope="col">Doanh thu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="sanPhamBanChay in sanPhamBanChay">
+                                <td>{{$index + 1}}</td>
+                                <td>
+                                    <img
+                                        src="/static/img/{{sanPhamBanChay.anh_mac_dinh}}"
+                                        style="margin-right: 10px"
+                                        width="150px"
+                                        height="150px"
+                                    />
+                                </td>
+                                <td>{{sanPhamBanChay.ten_sanpham}}</td>
+                                <td>{{sanPhamBanChay.mau_sac}}</td>
+                                <td>{{sanPhamBanChay.kich_thuoc}}</td>
+                                <td>{{sanPhamBanChay.so_luong_ban}}</td>
+                                <td>{{sanPhamBanChay.doanh_thu.toLocaleString('vi-VN')}} VNĐ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" th:src="@{/admin/js/thongke/thongke.js}"></script>
+</section>

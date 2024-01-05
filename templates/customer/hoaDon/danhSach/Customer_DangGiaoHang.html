@@ -1,0 +1,61 @@
+<section class="Customer_ChoGiaoHang" id="body-don-hang-customer" ng-controller="dangGiaoHangCustomerController">
+    <div class="tab-buttons">
+        <button class="tab-button" ng-click="tochoXacNhan()">Chờ xác nhận</button>
+        <button class="tab-button" ng-click="tochoGiaoHang()">Chờ giao hàng</button>
+        <button class="tab-button active" ng-click="toDangGiao()">Đang giao</button>
+        <button class="tab-button" ng-click="toDaGiao()">Đã giao</button>
+        <button class="tab-button" ng-click="toDaHuy()">Đã hủy</button>
+    </div>
+
+    <div class="container-fluid">
+        <!-- <div class="hduong1">
+               <button id="HoanThanhTatCa" class="daNhanTatCaCustomer" ng-click="DaNhanTatCa()">Đã nhận tất cả</button>
+          </div> -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-max">
+                    <table class="table" id="user-table-DangGiaoCustomer">
+                        <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Mã đơn</th>
+                                <th scope="col">Người nhận</th>
+                                <th scope="col">Số điện thoại</th>
+                                <th scope="col">Thành tiền</th>
+                                <th scope="col">Trạng thái</th>
+                                <th scope="col" colspan="2">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="hoaDon in hoaDons">
+                                <th>{{$index + 1}}</th>
+                                <td>{{hoaDon.maHoaDon}}</td>
+                                <td>{{hoaDon.nguoiNhan}}</td>
+                                <td>{{hoaDon.sdtnguoiNhan}}</td>
+                                <td>{{hoaDon.tongTienDonHang.toLocaleString('vi-VN')}} VNĐ</td>
+                                <td>{{hoaDon.trangThai.name}}</td>
+                                <td>
+                                    <div class="button-group" id="group-button-donHangCustomer">
+                                        <button
+                                            class="action-button chiTietHoaDonCus"
+                                            type="submit"
+                                            id="chiTietHoaDonCusDG"
+                                            ng-click="chiTiet(hoaDon)"
+                                        >
+                                            <i class="fa fa-info" aria-hidden="true"></i>
+                                        </button>
+
+                                        <button class="action-button DangGiaoCus" ng-click="DaNhanDuocHang(hoaDon)">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

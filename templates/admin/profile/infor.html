@@ -1,0 +1,81 @@
+<div class="container-fluid" ng-controller="ThongTinUserController">
+    <h2 style="text-align: center; margin-top: 20px">Thông tin cá nhân</h2>
+    <div class="card-body md-4">
+        <form class="col-md-6 mx-auto">
+            <div class="row gx-3 mb-3">
+                <div class="col-md-12">
+                    <label class="mb-2">Họ tên</label>
+                    <input class="form-control" ng-model="hoTen" />
+                </div>
+            </div>
+            <br />
+            <div class="row gx-3 mb-3">
+                <div class="col-md-12">
+                    <label class="mb-2">Email</label>
+                    <input class="form-control" ng-model="email" />
+                </div>
+            </div>
+            <br />
+            <div class="row gx-3 mb-3">
+                <div class="col-md-12">
+                    <label class="mb-2">Số điện thoại</label>
+                    <input class="form-control" ng-model="sdt" />
+                </div>
+            </div>
+            <br />
+            <div class="row gx-3 mb-3">
+                <div class="col-md-12">
+                    <label class="mb-2">Ngày sinh</label>
+                    <input class="form-control" ng-model="ngaySinh" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <label class="mb-2">Giới tính</label>
+                <div class="col-sm-12">
+                    <div class="form-check form-check-inline">
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            id="namRadio"
+                            ng-model="GioiTinhChon"
+                            ng-value="true"
+                        />
+                        <label class="form-check-label" for="namRadio">Nam</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            id="nuRadio"
+                            ng-model="GioiTinhChon"
+                            ng-value="false"
+                        />
+                        <label class="form-check-label" for="nuRadio">Nữ</label>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+                    <label class="mb-2">Giới tính</label>
+                    <div class="col-sm-12">
+                              <select class="form-select" ng-model="selectedGender" style="width: 100%;">
+                                   <option value="Nam">Nam</option>
+                                   <option value="Nu">Nữ</option>
+                              </select>
+                    </div>
+               </div> -->
+
+            <div class="row" style="text-align: right">
+                <div class="col-sm-12">
+                    <!-- <button class="btn btn-primary " target="__blank" ng-click="chinhSua()">Edit</button> -->
+                    <button class="btn btn-primary" style="margin-top: 20px" type="button" ng-click="chinhSua()">
+                        Lưu cập nhật
+                    </button>
+                    <button class="btn btn-primary" style="margin-top: 20px" type="button" ng-click="doiMatKhauNV()">
+                        Đổi mật khẩu
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

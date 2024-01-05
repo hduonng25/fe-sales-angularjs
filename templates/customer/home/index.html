@@ -1,0 +1,203 @@
+<!doctype html>
+<html ng-app="myAppCustomer">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="author" content="Untree.co" />
+        <link rel="shortcut icon" href="/static/customer/assets/images/bag.svg" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.js"></script>
+        <meta name="description" content="" />
+        <meta name="keywords" content="bootstrap, bootstrap4" />
+        <link href="/static/customer/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+        <link href="/static/customer/assets/css/tiny-slider.css" rel="stylesheet" />
+        <link href="/static/customer/assets/css/style.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="/static/admin/assets/vendor/fonts/boxicons.css" />
+        <script src="/static/customer/js/home/homeControllerCustomer.js"></script>
+        <link rel="stylesheet" href="/static/sales/online/sanPham/ChiTGietSanPham.css" />
+        <script src="/static/sales/online/sanPham/ChiTietSanPham.js"></script>
+        <script src="/static/sales/online/sanPham/CTSP.Controller.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        />
+        <script src="/static/customer/js/sanPham/DSSP.Controller.js"></script>
+        <title>SD_94</title>
+        <link rel="stylesheet" href="../../../static/customer/assets/css/index.css" />
+        <script src="/static/admin/js/Controller/logOut/LogOut.js"></script>
+        <script src="/static/customer/js/hoaDon/danhSach/ChoXacNhanCustomerController.js"></script>
+        <script src="/static/customer/js/hoaDon/danhSach/ChoGiaoHangCustomerController.js"></script>
+        <script src="/static/customer/js/hoaDon/danhSach/DaGiaoHangCustomerController.js"></script>
+        <script src="/static/customer/js/hoaDon/danhSach/DaHuyCustomerController.js"></script>
+        <script src="/static/customer/js/hoaDon/danhSach/DangGiaoHangCustomerController.js"></script>
+        <link rel="stylesheet" href="/static/customer/assets/css/hoaDon/DanhSach.css" />
+        <link rel="stylesheet" href="/static/customer/assets/css/hoaDon/Base.css" />
+        <link rel="stylesheet" href="/static/customer/assets/css/sanPham/DanhSach.css" />
+        <link rel="stylesheet" href="/static/customer/assets/css/gioHang/giohangCT.css" />
+        <script src="../../../static/customer/js/profile/thongTinKhachHang.js"></script>
+        <script src="../../../static/customer/js/profile/DoiMatKhau.js"></script>
+        <link rel="stylesheet" href="/static/customer/assets/css/sanPham/chiTietSp.css" />
+    </head>
+
+    <body>
+        <nav
+            class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark"
+            arial-label="Furni navigation bar"
+        >
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Adudas<span>.</span></a>
+
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarsFurni"
+                    aria-controls="navbarsFurni"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsFurni">
+                    <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Trang chủ</a>
+                        </li>
+                        <li><a class="nav-link" href="#!/product-list">Sản phẩm</a></li>
+                        <li><a class="nav-link" href="#!/don-hang">Đơn hàng</a></li>
+                    </ul>
+                    <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                        <ul class="navbar-nav flex-row align-items-center ms-auto">
+                            <!-- User -->
+                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                                <a
+                                    class="nav-link dropdown-toggle hide-arrow"
+                                    href="javascript:void(0);"
+                                    data-bs-toggle="dropdown"
+                                >
+                                    <div class="avatar avatar-online">
+                                        <img
+                                            src="/static/customer/assets/images/user.svg"
+                                            alt
+                                            class="w-px-40 h-auto rounded-circle"
+                                        />
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a class="dropdown-item" href="#!/thong-tin-khach-hang" id="thongtin-button">
+                                            <i class="bx bx-user me-2"></i>
+                                            <span class="align-middle">Thông tin</span>
+                                        </a>
+                                    </li>
+                                    <li ng-controller="LogoutController">
+                                        <a class="dropdown-item" href="#!/" id="dangXuat-homeAdmin" ng-click="logout()">
+                                            <i class="fas fa-sign-out-alt me-2"></i>
+                                            <span class="align-middle">Đăng xuất</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--/ User -->
+                        </ul>
+                        <li>
+                            <a class="nav-link" href="#!/cart-list"
+                                ><img src="/static/customer/assets/images/cart.svg"
+                            /></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="hero">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-5">
+                        <div class="intro-excerpt">
+                            <h1>Cửa hàng bán giày trực tuyến <span clsas="d-block">Adudas</span></h1>
+                            <p class="mb-4">
+                                Đối với chúng tôi, mỗi khách hàng là một thượng đế. Chúng tôi đặt ra một mục tiêu duy
+                                nhất là làm hài lòng tất cả khách hàng
+                            </p>
+                            <p><a href="" class="btn btn-secondary me-2">Khám phá sản phẩm</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="hero-img-wrap">
+                            <img src="/static/img/giay12.png" class="img-fluid" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="container-fluid" ng-view></div>
+        </div>
+
+        <footer class="footer-section">
+            <div class="container-fluid relative">
+                <div class="row g-5 mb-5">
+                    <div class="col-lg-4">
+                        <div class="mb-4 footer-logo-wrap">
+                            <a href="#" class="footer-logo">Adudas<span>.</span></a>
+                        </div>
+                        <p class="mb-4">
+                            Chúng tôi luôn mang đến cho khách hàng những trải nghiệm mua sắm tuyệt vời nhất. Chúng tôi ở
+                            đây để đem đến cho các bạn những sản phẩm chất lượng cũng như với giá thành phải chăng
+                        </p>
+
+                        <ul class="list-unstyled custom-social">
+                            <li>
+                                <a href="https://www.facebook.com/profile.php?id=100064539272447"
+                                    ><span class="fa fa-brands fa-facebook-f"></span
+                                ></a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="fa fa-brands fa-instagram"></span></a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="fa fa-brands fa-twitter"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="row links-wrap">
+                            <div class="col-6 col-sm-6 col-md-3">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Tìm hiểu về chúng tôi</a></li>
+                                    <li><a href="#!/product-list">Sản phẩm</a></li>
+                                    <li><a href="#">Địa chỉ: Kiều mai - Từ Liêm - Hà Nội</a></li>
+                                    <li><a href="#">Liên hệ: 0334152602</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="mt-5 text-center text-lg-start">
+                        Dự án tốt nghiệp &copy;
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>
+                        Nhóm SD94 <a href="https://untree.co">Website bán giày</a> Adudas
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="/static/customer/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/customer/js/tiny-slider.js"></script>
+        <script src="/static/customer/js/custom.js"></script>
+        <script src="/static/customer/js/cart/cart.js"></script>
+    </body>
+</html>

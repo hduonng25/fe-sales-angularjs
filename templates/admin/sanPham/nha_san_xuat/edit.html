@@ -1,0 +1,22 @@
+<div class="container-fluid" ng-controller="EditProducerController">
+    <div class="card mb-4">
+        <div class="card-header">Cập nhật nhà sản xuất</div>
+        <div class="card-body">
+            <form>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="small mb-1">Nhà sản xuất</label>
+                        <input class="form-control" id="name" type="text" ng-model="editProducer.name" />
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" type="button" ng-click="returnEdit(editProducer)">
+                    <i class="fas fa-arrow-left"></i> Quay lại
+                </button>
+                <button class="btn btn-primary" type="button" ng-click="saveEdits(editProducer)">
+                    <i class="fas fa-check"></i> Cập nhật
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<div ng-controller="DangGiaoHangController">
+    <div class="container-fluid my-auto d-flex align-items-center">
+        <div class="mx-auto">
+            <h1>Đang Giao Hàng</h1>
+        </div>
+    </div>
+    <div class="container-fluid my-auto d-flex align-items-center">
+        <div class="mx-auto">
+            <div class="tab-buttons">
+                <a href="#!/list-PurchaseBill" class="tab-button">Chờ xác nhận</a>
+                <a href="#!/cho-giao-hang" class="tab-button">Chờ giao hàng</a>
+                <a href="#!/dang-giao" class="tab-button active">Đang giao</a>
+                <a href="#!/da-giao" class="tab-button">Đã giao</a>
+                <a href="#!/da-huy" class="tab-button">Đã hủy</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between fromSearchBill">
+            <div class="d-flex">
+                <input
+                    class="form-control me-1"
+                    type="search"
+                    placeholder="Tìm kiếm"
+                    aria-label="Search"
+                    ng-model="search"
+                />
+
+                <input
+                    class="form-control me-1"
+                    type="date"
+                    placeholder="Search"
+                    aria-label="Search"
+                    ng-model="searchDate"
+                />
+                <button class="btn btn-primary btn-sm" type="submit" ng-click="searchDateBill(searchDate)">
+                    Tìm kiếm
+                </button>
+
+                <button
+                    type="button"
+                    class="dt-button buttons-html5 btn btn-white btn-success btn-bold"
+                    data-toggle="tooltip"
+                    title="Tải lại dữ liệu"
+                    ng-click="reLoad()"
+                >
+                    <span> <i class="fas fa-sync-alt"></i></span>
+                </button>
+            </div>
+            <div class="tab-buttons">
+                <a href="#!/xac-nhan-da-giao" class="tab-button active"
+                    >Xác nhận đã giao<span class="badge badge-secondary so-don-hang">{{ soDonHang }}</span></a
+                >
+            </div>
+        </div>
+    </div>
+    <table class="table align-middle mb-1 bg-white" id="tableBillDangGiaoHang">
+        <thead class="bg-light">
+            <tr>
+                <th>#</th>
+                <th>Mã HD</th>
+                <th>Ngày Tạo</th>
+                <th>Tổng tiền</th>
+                <th>Khách hàng</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pending in pager.pending">
+                <td>{{$index + 1}}</td>
+                <td>{{ pending.maHoaDon }}</td>
+                <td>{{ pending.createdDate | date:'dd/MM/yyyy' }}</td>
+                <td>{{ pending.tongTienDonHang.toLocaleString('vi-VN') + ' VNĐ'}}</td>
+                <td>{{ pending.nguoiNhan}}</td>
+                <td>{{ pending.emailNguoiNhan}}</td>
+                <td>{{ pending.sdtnguoiNhan}}</td>
+
+                <td>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-link" ng-click="confirm(pending)">
+                            <i class="bx bx-check-circle me-2"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link" ng-click="look(pending)">
+                            <i class="bx bx-edit me-2"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-link btn-sm btn-rounded" ng-click="huyDon(pending)">
+                            <i class="bx bx-trash me-2"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="card-footer text-center">
+        <button class="btn active" ng-repeat="pageNumber in pager.pageNumbers" ng-click="pager.page = pageNumber">
+            {{pageNumber}}
+        </button>
+    </div>
+</div>

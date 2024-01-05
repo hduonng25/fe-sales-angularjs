@@ -1,0 +1,73 @@
+<div class="container-fluid" ng-controller="CTSPController" id="dsSPCT">
+    <h2 id="h1-XemTruoc" style="text-align: center">Chi tiết sản phẩm</h2>
+    <div>
+        <form>
+            <div style="float: right; margin-bottom: 20px">
+                <button id="btnQuayLai" class="btn btn-primary" type="button" ng-click="returnProduct()">
+                    <ion-icon name="arrow-back"></ion-icon> Quay lại
+                </button>
+                <button
+                    id="btnQuayLai"
+                    class="btn btn-primary"
+                    type="button"
+                    ng-click="themSanPhamTuongTu()"
+                    style="float: right"
+                >
+                    <i class="fas fa-plus-circle mr-2"></i>Thêm sản phẩm tương tự
+                </button>
+            </div>
+        </form>
+    </div>
+    <br />
+    <div>
+        <table class="table align-middle mb-1 bg-white">
+            <thead id="sanPhamCT">
+                <tr>
+                    <th>#</th>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Màu sắc</th>
+                    <th>Kích cỡ</th>
+                    <th>Chất liệu</th>
+                    <th>Loại sản phẩm</th>
+                    <th>Nhà sản xuất</th>
+                    <th>Giá bán</th>
+                    <th style="text-align: center">Trạng thái</th>
+                    <th style="text-align: center">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="details in details">
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ details.sanPham.tenSanPham }}</td>
+                    <td>{{ details.soLuong }}</td>
+                    <td>{{ details.mauSac.tenMauSac }}</td>
+                    <td>{{ details.kichCo.kichCo }}</td>
+                    <td>{{ details.sanPham.chatLieu.chatLieu }}</td>
+                    <td>{{ details.sanPham.loaiSanPham.loaiSanPham }}</td>
+                    <td>{{ details.sanPham.nhaSanXuat.name }}</td>
+                    <td>{{ details.sanPham.gia.toLocaleString('vi-VN')}} VNĐ</td>
+                    <td>
+                        <div class="form-check form-switch" style="margin-left: 150px">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="flexSwitchCheckChecked"
+                                ng-model="details.trangThai"
+                                ng-checked="details.trangThai"
+                                ng-click="updateTrangThai(details)"
+                            />
+                        </div>
+                    </td>
+                    <td>
+                        <div style="text-align: center">
+                            <button type="button" class="btn btn-link" ng-click="editSPCT(details)">
+                                <i class="bx bx-edit me-2"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

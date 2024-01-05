@@ -1,0 +1,51 @@
+#container-scan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#scanButton {
+    margin-bottom: 80px;
+    align-self: center;
+    margin-left: 300px;
+    width: 150px;
+    height: 60px;
+    border-radius: 15px;
+    background-color: aquamarine;
+    border: none;
+}
+
+#button-troVo-nhanVien {
+    width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: aquamarine;
+    border: none;
+}
+
+#button-them-nhanVien {
+    width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: aquamarine;
+    border: none;
+}
+
+#scanButton.hidden {
+    display: none !important;
+}
+
+#preview {
+    margin-top: 30px;
+}
+
+#qrCodeInfo {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+#div-gioiTinh-NhanVien {
+    margin-top: 20px;
+}

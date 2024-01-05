@@ -1,0 +1,23 @@
+<div class="container-fluid" ng-controller="EditSizeController">
+    <div class="card mb-4">
+        <div class="card-header">Cập nhật kích cỡ</div>
+        <div class="card-body">
+            <form>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="small mb-1">Kích cỡ</label>
+                        <input class="form-control" id="name" type="text" ng-model="editSize.kichCo" />
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+
+                <button class="btn btn-primary" type="button" ng-click="returnEdit(editSize)">
+                    <i class="fas fa-arrow-left"></i> Quay lại
+                </button>
+                <button class="btn btn-primary" type="button" ng-click="saveEdits(editSize)">
+                    <i class="fas fa-check"></i> Cập nhật
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container-fluid" ng-controller="EditColorController">
+    <div class="card mb-4">
+        <div class="card-header">Cập nhật màu</div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label class="small mb-1" for="inputUsername">Tên màu</label>
+                    <input
+                        class="form-control"
+                        id="inputUsername"
+                        type="text"
+                        placeholder="Nhập tên màu"
+                        ng-model="editColor.tenMauSac"
+                    />
+                </div>
+
+                <div class="mb-3">
+                    <div id="colorPicker"></div>
+                    <input
+                        id="hexInput"
+                        class="form-control"
+                        type="text"
+                        placeholder="Mã màu"
+                        ng-model="editColor.maMauSac"
+                    />
+                </div>
+
+                <button class="btn btn-primary" type="button" ng-click="returnEdit(editColor)">
+                    <i class="fas fa-arrow-left"></i> Quay lại
+                </button>
+                <button class="btn btn-primary" type="button" ng-click="saveEdits(editColor)">
+                    <i class="fas fa-check"></i> Cập nhật
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

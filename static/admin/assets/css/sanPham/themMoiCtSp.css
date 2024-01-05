@@ -1,0 +1,75 @@
+#themMoiCtSP {
+    max-width: 1400px;
+    /* Điều chỉnh độ rộng tối đa của form */
+    margin: auto;
+    /* Để căn giữa form */
+}
+
+#themMoiCtSP .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#themMoiCtSP .input-group {
+    width: 100%;
+    /* Input sẽ rộng hơn toàn bộ phần tử cha */
+}
+
+#editCTSP1 body {
+    background-color: #f8f9fa;
+    /* Set a light background color */
+}
+
+#editCTSP1 .container-fluid {
+    padding: 20px;
+    /* Add some padding to the container */
+}
+
+#editCTSP1 .card {
+    border: 1px solid #d1d3e2;
+    /* Add a subtle border to the card */
+    border-radius: 8px;
+    /* Add rounded corners to the card */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Add a slight box shadow */
+}
+
+#editCTSP1 #h1-XemTruoc {
+    color: #007bff;
+    /* Set a primary color for the heading */
+}
+
+#editCTSP1 h6 {
+    color: #495057;
+    /* Set a dark color for subheadings */
+}
+
+#editCTSP1 strong {
+    color: #007bff;
+    /* Set a success color for strong elements */
+}
+
+#editCTSP1 .form-control {
+    border: 1px solid #ced4da;
+    /* Set a border color for form controls */
+    border-radius: 4px;
+    /* Add rounded corners to form controls */
+}
+
+#editCTSP1 .btn-primary:hover {
+    background-color: #0056b3;
+    /* Darken the background on hover */
+    border-color: #0056b3;
+    /* Darken the border on hover */
+}
+
+#editCTSP1 .text-center {
+    text-align: center;
+    /* Center-align text */
+}
+
+#editCTSP1 .text-right {
+    text-align: right;
+    /* Right-align text */
+}

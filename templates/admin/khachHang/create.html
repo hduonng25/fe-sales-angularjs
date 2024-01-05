@@ -1,0 +1,79 @@
+<div class="container-fluid" ng-controller="CreateCustomerController">
+    <!-- Account details card-->
+    <div class="card mb-4">
+        <div class="card-header">Thêm Khách Hàng</div>
+        <div class="card-body">
+            <form>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputUsername">Tên khách hàng</label>
+                        <input
+                            class="form-control"
+                            id="inputUsername"
+                            type="text"
+                            placeholder="Nhập tên khách hàng"
+                            ng-model="createCustomer.hoTen"
+                        />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputLocation">Số điện thoại</label>
+                        <input
+                            class="form-control"
+                            id="inputLocation"
+                            type="text"
+                            placeholder="Nhập số điện thoại"
+                            ng-model="createCustomer.soDienThoai"
+                        />
+                    </div>
+                </div>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Email</label>
+                        <input
+                            class="form-control"
+                            id="inputFirstName"
+                            type="text"
+                            placeholder="nhập email"
+                            ng-model="createCustomer.email"
+                        />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputLastName">Ngày sinh</label>
+                        <input
+                            class="form-control"
+                            id="inputLastName"
+                            type="date"
+                            placeholder="Nhập ngày sinh"
+                            ng-model="createCustomer.ngaySinh"
+                        />
+                    </div>
+                </div>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputLastName">Địa chỉ</label>
+                        <input
+                            class="form-control"
+                            id="inputLastName"
+                            type="text"
+                            placeholder="Nhập địa chỉ"
+                            ng-model="createCustomer.diaChi"
+                        />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputLastName">Mật khẩu</label>
+                        <input
+                            class="form-control"
+                            id="inputLastName"
+                            type="text"
+                            placeholder="Nhập mật khẩu"
+                            ng-model="createCustomer.matKhau"
+                        />
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" type="button" ng-click="returnCreate()">Quay lại</button>
+                <button class="btn btn-primary" type="button" ng-click="saveCreateCustomer()">Thêm mới</button>
+            </form>
+        </div>
+    </div>
+</div>

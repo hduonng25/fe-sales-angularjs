@@ -1,0 +1,273 @@
+<div class="container-fluid" ng-controller="BanHangTaiQuayController">
+    <div class="px-0 px-lg-0">
+        <input type="hidden" id="idHoaDonBanHangTaiQuay" />
+        <div class="pb-5">
+            <div class="table-responsive">
+                <table class="table" id="table-BanHangTaiQuay">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-3 text-uppercase">STT</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="p-2 px-3 text-uppercase">Sản phẩm</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">Giá tiền</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">Số lượng</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">Thành tiền</div>
+                            </th>
+                            <th scope="col" class="border-0 bg-light">
+                                <div class="py-2 text-uppercase">Thao tác</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="hoaDonChiTiet in hoaDonChiTiet">
+                            <td class="border-0 align-middle">{{$index + 1}}</td>
+
+                            <th scope="row" class="border-0">
+                                <div class="p-2">
+                                    <img
+                                        src="/static/img/{{hoaDonChiTiet.anhSanPham}}"
+                                        alt=""
+                                        width="70"
+                                        class="img-fluid rounded shadow-sm"
+                                    />
+                                    <div class="ml-3 d-inline-block align-middle">
+                                        <h5>{{hoaDonChiTiet.sanPhamChiTiet.sanPham.tenSanPham}}</h5>
+                                        <div class="ThongTinSP">
+                                            <span>{{hoaDonChiTiet.sanPhamChiTiet.mauSac.tenMauSac}}</span>
+                                            <span>/</span>
+                                            <span>{{hoaDonChiTiet.sanPhamChiTiet.kichCo.kichCo}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                            <td class="border-0 align-middle">
+                                <strong
+                                    >{{hoaDonChiTiet.sanPhamChiTiet.sanPham.gia.toLocaleString('vi-VN')}} VNĐ</strong
+                                >
+                            </td>
+                            <td class="border-0 align-middle">{{hoaDonChiTiet.soLuong}}</td>
+                            <td class="border-0 align-middle">
+                                <strong>{{hoaDonChiTiet.thanhTien.toLocaleString('vi-VN')}} VNĐ</strong>
+                            </td>
+                            <td class="border-0 align-middle">
+                                <div class="button-group">
+                                    <button class="text-dark xoaHDCT" ng-click="xoaHDCT(hoaDonChiTiet)">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="full-width-row" ng-if="hoaDonChiTiet.length === 0">
+                    <td colspan="12" class="text-center">
+                        <div class="empty-content">
+                            <img src="/static/img/noData2.png" alt="Không có sản phẩm" />
+                        </div>
+                    </td>
+                </div>
+            </div>
+
+            <br />
+            <div class="button-group" style="float: right">
+                <button class="btn btn-dark px-4 rounded-pill" ng-click="quayLai()">
+                    <i class="fas fa-arrow-left"></i>
+                    Danh sách
+                </button>
+
+                <button class="btn btn-dark px-4 rounded-pill" ng-click="themSanPham()">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    Thêm sản phẩm
+                </button>
+            </div>
+        </div>
+
+        <div class="row py-5 p-4 bg-white rounded shadow-sm">
+            <div class="col-lg-6">
+                <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Khuyến mại</div>
+                <div class="p-4">
+                    <p class="font-italic mb-4">Áp dụng khuyến mại cho hóa đơn</p>
+                    <div class="input-group mb-4 border rounded-pill p-2">
+                        <select
+                            name="couponCode"
+                            class="form-control border-0"
+                            ng-model="KhuyenMaiDangChon"
+                            ng-change="onKhuyenMaiChange()"
+                        >
+                            <option value="">Chọn mã giảm giá</option>
+                            <option
+                                id="KhuyenMaiDangChon"
+                                ng-repeat="km in khuyenMai"
+                                value="{{km.tenKhuyenMai}}"
+                                class="option"
+                            >
+                                {{km.tenKhuyenMai}}
+                            </option>
+                        </select>
+                        <div class="input-group-append border-0">
+                            <button type="button" class="btn btn-dark px-4 rounded-pill" ng-click="themMaGiamGia()">
+                                <i class="fa fa-gift mr-2"></i>Áp dụng
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4">
+                    <p class="font-italic mb-4">Nhập tiền khách đưa và hiển thị tiền thiếu và tiền thừa</p>
+                    <div class="input-group mb-4 border rounded-pill p-2">
+                        <input
+                            type="text"
+                            placeholder="Nhập tiền khách đưa"
+                            aria-describedby="button-addon3"
+                            class="form-control border-0 tienKhachDua-input"
+                            id="tienKhachDuaInput"
+                            ng-model="tienKhachDua"
+                            ng-change="tinhTienTraLai()"
+                        />
+                    </div>
+                    <li class="d-flex justify-content-between py-3 border-bottom">
+                        <strong class="text-muted">Tiền thiếu</strong
+                        ><strong id="tienThieu">{{tienThieu.toLocaleString('vi-VN')}} VNĐ</strong>
+                    </li>
+
+                    <li class="d-flex justify-content-between py-3 border-bottom">
+                        <strong class="text-muted">Tiền trả lại</strong
+                        ><strong id="tienTralai">{{tienTraLai.toLocaleString('vi-VN')}} VNĐ</strong>
+                    </li>
+                </div>
+
+                <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Thông tin khách hàng</div>
+                <div class="p-4">
+                    <p class="font-italic mb-4">Chọn khách hàng có trong danh sách</p>
+                    <div class="input-group mb-4 border rounded-pill p-2">
+                        <select
+                            name="couponCode"
+                            class="form-control border-0"
+                            id="KhachHang-select"
+                            ng-model="KhachHangDangChon"
+                            ng-change="onKhachHangChange()"
+                        >
+                            <option value="">Chọn khách hàng</option>
+                            <option ng-repeat="kh in khachHangList" value="{{kh.id}}" class="option">
+                                {{kh.hoTen}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <p class="font-italic mb-4">Hoặc nhập thông tin khách hàng</p>
+                    <div class="input-group mb-4 border rounded-pill p-2">
+                        <input
+                            type="text"
+                            placeholder="Nhập tên khách hàng"
+                            aria-describedby="button-addon3"
+                            class="form-control border-0"
+                            id="hoTenKhachHang"
+                            ng-model="hoTenKhachHang"
+                        />
+                    </div>
+
+                    <div class="input-group mb-4 border rounded-pill p-2">
+                        <input
+                            type="text"
+                            placeholder="Nhập số điện thoại khách hàng"
+                            aria-describedby="button-addon3"
+                            class="form-control border-0"
+                            id="SDTKhachHang"
+                            ng-model="SDTKhachHang"
+                        />
+                    </div>
+                </div>
+
+                <div class="input-group-append border-0" style="float: right">
+                    <button
+                        id="themThongTinKhachHang"
+                        type="button"
+                        class="btn btn-dark px-4 rounded-pill"
+                        ng-click="themThongTinKhachHang()"
+                    >
+                        <i class="fa fa-save mr-2"></i>Thêm thông tin
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Thông tin hóa đơn</div>
+                <div class="p-4">
+                    <p class="font-italic mb-4">Thông tin của hóa đơn</p>
+                    <ul class="list-unstyled mb-4">
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted">Mã đơn</strong><strong>{{hoaDon.maHoaDon}}</strong>
+                        </li>
+
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted">Ngày tạo</strong
+                            ><strong>{{hoaDon.createdDate| date:'dd/MM/yyyy' }}</strong>
+                        </li>
+
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted">Giảm giá đã áp dụng</strong
+                            ><strong id="tenGiamGia-TaiQuay">{{hoaDon.khuyenMai.tenKhuyenMai}}</strong>
+                        </li>
+
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted">Khách hàng</strong
+                            ><strong id="tenKhachHangTaiQuay">{{hoaDon.khachHang.hoTen}} </strong>
+                        </li>
+
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted">Số điện thoại khách hàng</strong
+                            ><strong id="SDTKhachHangTaiQuay">{{hoaDon.khachHang.soDienThoai}} </strong>
+                        </li>
+
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted">Tạm tính</strong
+                            ><strong id="tongTienHang-taiQuay"
+                                >{{hoaDon.tongTienHoaDon.toLocaleString('vi-VN')}} VNĐ</strong
+                            >
+                        </li>
+
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted">Tiền giảm</strong
+                            ><strong id="discount-taiQuay">{{hoaDon.tienGiam.toLocaleString('vi-VN')}} VNĐ</strong>
+                        </li>
+
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted">Tiền thanh toán</strong>
+                            <h5 class="font-weight-bold" id="tongTienHoaDon-taiQuay">
+                                {{hoaDon.tongTienDonHang.toLocaleString('vi-VN')}} VNĐ
+                            </h5>
+                        </li>
+                    </ul>
+
+                    <div class="button-group" style="float: right">
+                        <button
+                            type="submit"
+                            class="btn btn-dark px-4 rounded-pill HuyDonBanTaiQuay"
+                            ng-click="huyDon()"
+                        >
+                            <i class="fas fa-trash"></i> Hủy đơn
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="btn btn-dark px-4 rounded-pill"
+                            id="thanhToanHoaDonTaiQuay"
+                            ng-click="thanhToan()"
+                        >
+                            <i class="bi bi-currency-dollar"></i> Thanh toán
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

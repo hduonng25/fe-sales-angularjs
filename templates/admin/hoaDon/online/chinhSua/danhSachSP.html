@@ -1,0 +1,126 @@
+<div class="untree_co-section product-section before-footer-section" ng-controller="danhSachSanPhamHoaDonController">
+    <div class="container-fluid" id="dsCustomerSP">
+        <div class="bg-light">
+            <div class="col-md-2 mb-3 align-self-end" style="margin-bottom: 10px">
+                <button type="button" id="button-tim-kiem" ng-click="quayVe()">
+                    <i class="fa fa-arrow-left"></i> Quay về
+                </button>
+            </div>
+
+            <form id="productFilter" style="padding: 25px; border: 1px solid #ddd; border-radius: 10px">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label">Loại sản phẩm</label>
+                        <select class="form-select" ng-model="idloaiSanPham" ng-change="filterByLoaiSp()">
+                            <option value="">Chọn loại sản phẩm</option>
+                            <option
+                                ng-repeat="lsp in loaiSanPham"
+                                value="{{lsp.id}}"
+                                ng-selected="lsp.id == idloaiSanPham"
+                            >
+                                {{lsp.loaiSanPham}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label">Chất liệu</label>
+                        <select class="form-select" ng-model="id_chat_lieu" ng-change="filterByChatLieu()">
+                            <option value="">Chọn chất liệu</option>
+                            <option ng-repeat="x in chatLieu" value="{{x.id}}" ng-selected="x.id == id_chat_lieu">
+                                {{x.chatLieu}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label">Nhà sản xuất</label>
+                        <select class="form-select" ng-model="id_nsx" ng-change="filterByNsx()">
+                            <option value="">Chọn nhà sản xuất</option>
+                            <option ng-repeat="nsx in nhaSanXuat" value="{{nsx.id}}" ng-selected="nsx.id == id_nsx">
+                                {{nsx.name}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label">Màu sắc</label>
+                        <select class="form-select" ng-model="mauSac_id" ng-change="filterByMauSac()">
+                            <option value="">Chọn màu sắc</option>
+                            <option ng-repeat="ms in mauSac" value="{{ms.id}}" ng-selected="ms.id == mauSac_id">
+                                {{ms.tenMauSac}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label">Kích cỡ</label>
+                        <select class="form-select" ng-model="kichCo_id" ng-change="filterByKichCo()">
+                            <option value="">Chọn kích cỡ</option>
+                            <option ng-repeat="kc in kichCo" value="{{kc.id}}" ng-selected="kc.id == kichCo_id">
+                                {{kc.kichCo}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label" for="gia1">Từ giá:</label>
+                        <input class="form-control" id="gia1" type="number" ng-model="gia1" required />
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label" for="gia2">Đến giá:</label>
+                        <input class="form-control" id="gia2" type="number" ng-model="gia2" required />
+                    </div>
+
+                    <div class="col-md-3 mb-3 align-self-end">
+                        <button type="button" id="button-tim-kiem" ng-click="filterByGia()">Tìm kiếm theo giá</button>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label for="color" class="form-label">Tên sản phẩm</label>
+                        <input class="form-control" type="search" placeholder="Tìm kiếm" ng-model="searchTerm" />
+                    </div>
+
+                    <div class="col-md-2 mb-3 align-self-end">
+                        <button type="button" id="button-tim-kiem" ng-click="searchAll(searchTerm)">
+                            Tìm kiếm theo tên
+                        </button>
+                    </div>
+
+                    <div class="col-md-3 mb-3 align-self-end">
+                        <button type="button" id="button-tim-kiem" title="Tải lại dữ liệu" ng-click="reLoad()">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br />
+        <br />
+        <div class="danhSachSp">
+            <div class="row">
+                <div class="col-12 col-md-4 col-lg-3 mb-5" ng-repeat="sanPham in pager.sanPham">
+                    <a class="product-item" ng-click="getSanPhamChiTiet(sanPham)">
+                        <img
+                            src="/static/img/{{sanPham.anh_san_pham}}"
+                            class="img-fluid product-thumbnail"
+                            style="width: 300px; height: 300px"
+                        />
+                        <h3 class="product-title">{{ sanPham.tenSanPham }}</h3>
+                        <strong class="product-price">{{ sanPham.gia.toLocaleString('vi-VN') }} VNĐ</strong>
+
+                        <span class="icon-cross">
+                            <img src="/static/customer/assets/images/cross.svg" class="img-fluid" />
+                        </span>
+                    </a>
+                </div>
+                <div class="card-footer text-center">
+                    <button class="btn" ng-repeat="pageNumber in pager.pageNumbers" ng-click="pager.page = pageNumber">
+                        {{pageNumber}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

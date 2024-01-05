@@ -1,0 +1,60 @@
+<!doctype html>
+<html ng-app="RegisterApp">
+    <head>
+        <meta charset="utf-8" />
+        <title>Siêu cấp vjp pro</title>
+        <link rel="icon" type="image/png" href="/static/auth/login/images/icons/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="/static/auth/register/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css"
+        />
+
+        <link rel="stylesheet" href="/static/auth/register/css/style.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.js"></script>
+        <script src="/static/auth/register/js/controller/Register.App.js"></script>
+        <script src="/static/auth/register/js/controller/Register.Controller.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+
+    <body>
+        <div class="wrapper" ng-controller="RegisterController">
+            <div class="inner">
+                <div class="image-holder">
+                    <img src="/static/auth/register/images/1.jpg" alt="" />
+                </div>
+                <form action="">
+                    <h3 style="font-family: 'Times New Roman', Times, serif">Đăng ký</h3>
+                    <div class="form-row">
+                        <input type="text" class="form-control" placeholder="Điền họ tên" ng-model="hoTen" />
+                        <input type="text" class="form-control" placeholder="Điền email" ng-model="email" />
+                    </div>
+                    <div class="form-row">
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Điền số điện thoại"
+                            ng-model="soDienThoai"
+                        />
+                        <input type="password" class="form-control" placeholder="Điền mật khẩu" ng-model="matKhau" />
+                    </div>
+                    <div class="form-row">
+                        <input type="date" class="form-control" placeholder="Điền ngày sinh" ng-model="ngaySinh" />
+                        <input type="text" class="form-control" placeholder="Điền địa chỉ" ng-model="diaChi" />
+                    </div>
+
+                    <button ng-click="dangKy()">Đăng ký<i class="zmdi zmdi-long-arrow-right"></i></button>
+                    <br />
+                    <p class="text">
+                        Nếu bạn đã có tài khoản?
+                        <span><a href="#!/" class="return-DangNhap" ng-click="returnDangNhap()">Đăng nhập</a></span>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <script src="/static/auth/register/js/jquery-3.3.1.min.js"></script>
+        <script src="/static/auth/register/js/main.js"></script>
+    </body>
+</html>

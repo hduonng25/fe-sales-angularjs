@@ -1,0 +1,48 @@
+/* Style the button group */
+.button-group {
+    /* display: flex; */
+    align-items: center;
+}
+
+/* Style the quantity input */
+.button-group input {
+    width: 100px;
+    text-align: center;
+    margin-right: 0;
+    padding: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+/* Style the update button */
+.button-group button {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    padding: 7px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the button */
+.button-group button:hover {
+    background-color: #0056b3;
+}
+
+/* Icon styling */
+.button-group button .fas {
+    margin-right: 5px;
+}
+
+/* Responsive styles */
+@media (max-width: 20px) {
+    .button-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* .button-group input {
+        margin-bottom: 10px;
+    } */
+}

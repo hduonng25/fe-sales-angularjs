@@ -1,0 +1,94 @@
+<div class="container-fluid" ng-controller="themSanPhamTuongTuController">
+    <div class="card mb-4" id="editCTSP1">
+        <h2 id="h1-XemTruoc" class="text-center">Thêm sản phẩm tương tự</h2>
+        <br />
+        <div class="card-body">
+            <form>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-4">
+                        <h6>Tên sản phẩm: <strong>{{editproduct.sanPham.tenSanPham}}</strong></h6>
+                    </div>
+                </div>
+                <div class="row gx-3 mb-3">
+                    <div class="row gx-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="mb-1">Số lượng</label>
+                            <div class="input-group mb-4 border rounded-pill p-2">
+                                <input
+                                    class="form-control border-0"
+                                    id="quantity"
+                                    type="number"
+                                    placeholder="Nhập số lượng"
+                                    ng-model="editproduct.soLuong"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="countries" class="small mb-1">Màu sắc</label>
+                            <div class="form-inline mb-4">
+                                <div class="input-group flex-grow-1 border rounded-pill p-2">
+                                    <select
+                                        name="mauSac"
+                                        class="form-control border-0"
+                                        ng-model="selectedColor"
+                                        ng-change="onColorChange()"
+                                    >
+                                        <option value="">Chọn màu sắc</option>
+                                        <option ng-repeat="mauSac in mauSac" value="{{mauSac}}">
+                                            {{mauSac.tenMauSac}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <button class="button ml-2 p-2" id="button-themNgay" ng-click="ThemMoiMauSac()">
+                                    <ion-icon name="add-outline" id="icon-icon"></ion-icon>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="small mb-1">Kích cỡ</label>
+                            <div class="form-inline mb-4">
+                                <div class="input-group flex-grow-1 border rounded-pill p-2">
+                                    <select
+                                        name="kichCo"
+                                        class="form-control border-0"
+                                        ng-model="selectedSizes"
+                                        ng-change="onKichCoChange()"
+                                        ng-model="selectedSizes"
+                                    >
+                                        <option value="">Chọn kích cỡ</option>
+                                        <option
+                                            ng-repeat="kichCos in kichCo"
+                                            value="{{kichCos}}"
+                                            ng-click="getIdSize(kichCos)"
+                                        >
+                                            {{kichCos.kichCo}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <button class="button ml-2 p-2" id="button-themNgay" ng-click="ThemMoiKichCo()">
+                                    <ion-icon name="add-outline" id="icon-icon"></ion-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <button id="btnQuayLai" class="btn btn-primary" type="button" ng-click="returnEdit(editProduct)">
+                        <ion-icon name="arrow-back"></ion-icon> Quay lại
+                    </button>
+
+                    <button
+                        id="btnCapNhat"
+                        class="btn btn-primary"
+                        type="button"
+                        ng-click="LuuThemMoiSanPhamTuongTu(editProduct)"
+                    >
+                        <ion-icon name="save"></ion-icon> Cập nhật
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
